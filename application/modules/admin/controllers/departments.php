@@ -184,7 +184,6 @@ class Departments extends admin {
 		{	
 			if(empty($department_error))
 			{
-				echo $this->input->post("department_description"); die();
 				$department = $this->session->userdata('department_file_name');
 				
 				if($department == FALSE)
