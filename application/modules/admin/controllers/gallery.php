@@ -11,7 +11,7 @@ class Gallery extends admin {
 		parent:: __construct();
 		$this->load->model('users_model');
 		$this->load->model('gallery_model');
-		$this->load->model('service_model');
+		$this->load->model('department_model');
 		$this->load->model('file_model');
 		
 		$this->load->library('image_lib');
@@ -28,8 +28,8 @@ class Gallery extends admin {
 	*/
 	public function index() 
 	{
-		$where = 'gallery.service_id = service.service_id';
-		$table = 'gallery, service';
+		$where = 'gallery.department_id = department.department_id';
+		$table = 'gallery, department';
 		$segment = 3;
 		//pagination
 		$this->load->library('pagination');
@@ -72,21 +72,22 @@ class Gallery extends admin {
 			$v_data['query'] = $query;
 			$v_data['page'] = $page;
 			$v_data['gallery_location'] = $this->gallery_location;
+			$v_data['active_departments'] = $this->department_model->get_active_departments();
 			$data['content'] = $this->load->view('gallery/all_images', $v_data, true);
 		}
 		
 		else
 		{
-			$data['content'] = '<a href="'.site_url().'administration/add-gallery" class="btn btn-success pull-right">Add Image</a>There are no gallery images';
+			$data['content'] = '<a href="'.site_url().'administration/add-gallery" class="btn btn-success pull-right">Add image</a>There are no gallery images';
 		}
-		$data['title'] = 'All Gallery Images';
+		$data['title'] = 'All gallery images';
 		
 		$this->load->view('templates/general_admin', $data);
 	}
 	
 	function add_gallery()
 	{
-		$v_data['gallery_location'] = 'http://placehold.it/800x800';
+		$v_data['gallery_location'] = 'http://placehold.it/500x500';
 		
 		$this->session->unset_userdata('gallery_error_message');
 		
@@ -113,7 +114,7 @@ class Gallery extends admin {
 			{
 				$data2 = array(
 					'gallery_name'=>$this->input->post("gallery_name"),
-					'service_id'=>$this->input->post("service_id"),
+					'department_id'=>$this->input->post("department_id"),
 					'gallery_status'=>1,
 					'gallery_image_name'=>$this->session->userdata('gallery_file_name')
 				);
@@ -136,7 +137,7 @@ class Gallery extends admin {
 			$v_data['gallery_location'] = $this->gallery_location.$this->session->userdata('gallery_file_name');
 		}
 		$v_data['error'] = $gallery_error;
-		$v_data['services'] = $this->service_model->get_active_services();
+		$v_data['active_departments'] = $this->department_model->get_active_departments();
 		
 		$data['content'] = $this->load->view("gallery/add_gallery", $v_data, TRUE);
 		$data['title'] = 'Add Gallery';
@@ -189,7 +190,7 @@ class Gallery extends admin {
 				}
 				$data2 = array(
 					'gallery_name'=>$this->input->post("gallery_name"),
-					'service_id'=>$this->input->post("service_id"),
+					'department_id'=>$this->input->post("department_id"),
 					'gallery_image_name'=>$gallery
 				);
 				

@@ -26,7 +26,7 @@
                     <tr>
                     	<th>#</th>
                     	<th>Image</th>
-                    	<th>Service</th>
+                    	<th>Department</th>
                     	<th>Status</th>
                     	<th>Actions</th>
                     </tr>
@@ -37,7 +37,7 @@
 					$gallery_id = $cat->gallery_id;
 					$gallery_status = $cat->gallery_status;
 					$gallery_name = $cat->gallery_name;
-					$service_name = $cat->service_name;
+					$department_name = $cat->department_name;
 					$gallery_image_name = 'thumbnail_'.$cat->gallery_image_name;
 					$count++;
 					
@@ -53,7 +53,7 @@
                     	<td>
                         <img src="<?php echo $gallery_location.$gallery_image_name;?>" width="100" class="img-responsive img-thumbnail">
                         </td>
-                    	<td><?php echo $service_name?></td>
+                    	<td><?php echo $department_name?></td>
                     	<td><?php echo $status?></td>
                     	<td>
                         	<a href="<?php echo site_url()."administration/edit-gallery/".$gallery_id.'/'.$page;?>" class="i_size" title="Edit">
