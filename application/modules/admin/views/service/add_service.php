@@ -42,33 +42,63 @@
                 <div class="row">
                 	<div class="col-md-6">
                         <div class="form-group">
-                            <label for="service_name">Service Name</label>
-                            <input type="text" class="form-control" name="service_name" placeholder="Service Name" value="<?php echo set_value("service_name");?>">
+                            <label for="service_name">Department</label>
+                            <select class="form-control" name="department_id">
+                            	<?php
+                                	if($active_departments->num_rows() > 0)
+									{
+										$dept_id = set_value('department_id');
+										foreach($active_departments->result() as $res)
+										{
+											$department_id = $res->department_id;
+											$department_name = $res->department_name;
+											if($dept_id ==$department_id)
+											{
+												echo '<option value="'.$department_id.'" selected="selected">'.$department_name.'</option>';
+											}
+											else
+											{
+												echo '<option value="'.$department_id.'">'.$department_name.'</option>';
+											}
+										}
+									}
+								?>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="service_description">Description</label>
-                            <textarea class="form-control" placeholder="Service Description" name="service_description"><?php echo set_value("service_description");?></textarea>
+                            <label for="service_name">Service name</label>
+                            <input type="text" class="form-control" name="service_name" placeholder="Service Name" value="<?php echo set_value("service_name");?>">
                         </div>
 					</div>
                 	<div class="col-md-6">
-                        <label class="control-label" for="image">Service Image</label>
-                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                	<img src="<?php echo $service_location;?>" class="img-responsive"/>
-                                </div>
-                                    <div>
-                                        <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="service_image"></span>
-                                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                    </div>
-                                </div>
+                        <label class="control-label" for="image">Service image</label>
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                <img src="<?php echo $service_location;?>" class="img-responsive"/>
                             </div>
+                            <div>
+                                <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="service_image"></span>
+                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                            </div>
+                        </div>
                 	</div>
+                </div>
+                
+                <div class="row">
+                	<div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="service_description">Service description</label>
+                            <div class="col-md-10">
+                            	<textarea class="cleditor" name="service_description"><?php echo set_value("service_description");?></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 				
 				<div class="form-group center-align">
 					<input type="submit" value="Add Service" class="login_btn btn btn-success btn-lg">
 				</div>
 				<?php
-					form_close();
+					echo form_close();
 				?>
 		</div>

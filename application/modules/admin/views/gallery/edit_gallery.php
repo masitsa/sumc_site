@@ -26,7 +26,7 @@
 				<?php }?>
 			
 				<?php
-				$attributes = array('role' => 'form');
+				$attributes = array('role' => 'form', 'class'=>'form-horizontal');
 		
 				echo form_open_multipart($this->uri->uri_string(), $attributes);
 				
@@ -40,45 +40,45 @@
 				}
 				?>
                 <div class="row">
-                	<div class="col-md-6">
+                	<div class="col-md-4">
                         <div class="form-group">
-                            <label class="col-lg-6 control-label" for="gallery_name">Title</label>
-                            <div class="col-lg-6">
+                            <label class="col-lg-4 control-label" for="gallery_name">Title</label>
+                            <div class="col-lg-8">
                             	<input type="text" class="form-control" name="gallery_name" placeholder="Title" value="<?php echo $gallery_row->gallery_name;?>">
                             </div>
                         </div>
-                        <!-- service type -->
+                        <!-- department type -->
                         <div class="form-group">
-                            <label class="col-lg-6 control-label">Service</label>
-                            <div class="col-lg-6">
-                                <select name="service_id" id="service_id" class="form-control" required>
+                            <label class="col-lg-4 control-label">Department</label>
+                            <div class="col-lg-8">
+                                <select name="department_id" id="department_id" class="form-control" required>
                                     <?php
-                                    if($services->num_rows() > 0)
+                                    if($active_departments->num_rows() > 0)
                                     {
-                                        $result = $services->result();
+                                        $result = $active_departments->result();
                                         
                                         foreach($result as $res)
                                         {
-                                            if($res->service_id == $gallery_row->service_id)
+                                            if($res->department_id == $gallery_row->department_id)
                                             {
-                                                echo '<option value="'.$res->service_id.'" selected="selected">'.$res->service_name.'</option>';
+                                                echo '<option value="'.$res->department_id.'" selected="selected">'.$res->department_name.'</option>';
                                             }
                                             else
                                             {
-                                                echo '<option value="'.$res->service_id.'">'.$res->service_name.'</option>';
+                                                echo '<option value="'.$res->department_id.'">'.$res->department_name.'</option>';
                                             }
                                         }
                                     }
                                     ?>
                                 </select>
                             </div>
-                        <!-- end: service type -->
+                        <!-- end: department type -->
                         </div> 
 					</div>
-                	<div class="col-md-6">
+                	<div class="col-md-8">
                         <label class="control-label" for="image">Gallery Image</label>
                             <div class="fileinput fileinput-new" data-provides="fileinput">
-                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="max-height: 400px;">
                                 	<img src="<?php echo $gallery_location;?>" class="img-responsive"/>
                                 </div>
                                     <div>
@@ -94,6 +94,6 @@
 					<input type="submit" value="Edit Image" class="login_btn btn btn-success btn-lg">
 				</div>
 				<?php
-					form_close();
+					echo form_close();
 				?>
 		</div>

@@ -25,7 +25,8 @@
                 <table class="table table-condensed table-striped table-hover">
                     <tr>
                     	<th>#</th>
-                    	<th>Image</th>
+                    	<!--<th>Image</th>-->
+                    	<th>Department</th>
                     	<th>Service</th>
                     	<th>Status</th>
                     	<th>Actions</th>
@@ -34,11 +35,26 @@
 				$count = $page;
 				foreach($query->result() as $cat){
 					
+					$dept_id = $cat->department_id;
 					$service_id = $cat->service_id;
 					$service_status = $cat->service_status;
 					$service_name = $cat->service_name;
 					$service_image_name = 'thumbnail_'.$cat->service_image_name;
 					$count++;
+					$department_name = '';
+					if($active_departments->num_rows() > 0)
+					{
+						foreach($active_departments->result() as $res)
+						{
+							$department_id = $res->department_id;
+							
+							if($dept_id ==$department_id)
+							{
+								$department_name = $res->department_name;
+								break;
+							}
+						}
+					}
 					
 					if($service_status == 1){
 						$status = '<span class="label label-success">Active</span>';
@@ -49,9 +65,10 @@
 					?>
                     <tr>
                     	<td><?php echo $count?></td>
-                    	<td>
+                    	<!--<td>
                         <img src="<?php echo $service_location.$service_image_name;?>" width="100" class="img-responsive img-thumbnail">
-                        </td>
+                        </td>-->
+                    	<td><?php echo $department_name?></td>
                     	<td><?php echo $service_name?></td>
                     	<td><?php echo $status?></td>
                     	<td>

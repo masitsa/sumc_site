@@ -20,4 +20,6 @@
 <file name="user_types_model.php" server="148.251.2.43/public_html/" local="130597418420000000" remote="130656301800000000" Dst="0" />
 <file name="blog_model.php" server="185.61.152.12/public_html/development/" local="130737271931875326" remote="130737119400000000" Dst="0" />
 <file name="department_model.php" server="148.251.30.198/public_html/sumc2/" local="130796938174078732" remote="130796967000000000" Dst="0" />
+<file name="service_model.php" server="62.210.146.138/public_html/sumc/" local="130725291663017114" remote="130797068400000000" Dst="0" />
+<file name="gallery_model.php" server="62.210.146.138/public_html/sumc/" local="130800388777771415" remote="130800389400000000" Dst="0" />
 </dwsync>

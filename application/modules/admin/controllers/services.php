@@ -11,6 +11,7 @@ class Services extends admin {
 		parent:: __construct();
 		$this->load->model('users_model');
 		$this->load->model('service_model');
+		$this->load->model('department_model');
 		$this->load->model('file_model');
 		
 		$this->load->library('image_lib');
@@ -71,6 +72,7 @@ class Services extends admin {
 			$v_data['query'] = $query;
 			$v_data['page'] = $page;
 			$v_data['service_location'] = $this->service_location;
+			$v_data['active_departments'] = $this->department_model->get_active_departments();
 			$data['content'] = $this->load->view('service/all_services', $v_data, true);
 		}
 		
@@ -104,8 +106,9 @@ class Services extends admin {
 		
 		$service_error = $this->session->userdata('service_error_message');
 		
-		$this->form_validation->set_rules('service_name', 'Title', 'trim|xss_clean');
+		$this->form_validation->set_rules('service_name', 'Service name', 'trim|xss_clean');
 		$this->form_validation->set_rules('service_description', 'Description', 'trim|xss_clean');
+		$this->form_validation->set_rules('department_id', 'Department', 'numeric|xss_clean');
 
 		if ($this->form_validation->run())
 		{	
@@ -115,7 +118,8 @@ class Services extends admin {
 					'service_name'=>$this->input->post("service_name"),
 					'service_description'=>$this->input->post("service_description"),
 					'service_status'=>1,
-					'service_image_name'=>$this->session->userdata('service_file_name')
+					'service_image_name'=>$this->session->userdata('service_file_name'),
+					'department_id'=>$this->input->post("department_id")
 				);
 				
 				$table = "service";
@@ -136,6 +140,7 @@ class Services extends admin {
 			$v_data['service_location'] = $this->service_location.$this->session->userdata('service_file_name');
 		}
 		$v_data['error'] = $service_error;
+		$v_data['active_departments'] = $this->department_model->get_active_departments();
 		
 		$data['content'] = $this->load->view("service/add_service", $v_data, TRUE);
 		$data['title'] = 'Add Service';
@@ -172,9 +177,9 @@ class Services extends admin {
 		
 		$service_error = $this->session->userdata('service_error_message');
 		
-		$this->form_validation->set_rules('check', 'check', 'trim|xss_clean');
-		$this->form_validation->set_rules('service_name', 'Title', 'trim|xss_clean');
+		$this->form_validation->set_rules('service_name', 'Service name', 'trim|xss_clean');
 		$this->form_validation->set_rules('service_description', 'Description', 'trim|xss_clean');
+		$this->form_validation->set_rules('department_id', 'Department', 'numeric|xss_clean');
 
 		if ($this->form_validation->run())
 		{	
@@ -190,6 +195,7 @@ class Services extends admin {
 				$data2 = array(
 					'service_name'=>$this->input->post("service_name"),
 					'service_description'=>$this->input->post("service_description"),
+					'department_id'=>$this->input->post("department_id"),
 					'service_image_name'=>$service
 				);
 				
@@ -212,6 +218,7 @@ class Services extends admin {
 			$v_data['service_location'] = $this->service_location.$this->session->userdata('service_file_name');
 		}
 		$v_data['error'] = $service_error;
+		$v_data['active_departments'] = $this->department_model->get_active_departments();
 		
 		$data['content'] = $this->load->view("service/edit_service", $v_data, TRUE);
 		$data['title'] = 'Edit Service';

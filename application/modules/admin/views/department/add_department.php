@@ -48,18 +48,17 @@
 					</div>
                 	<div class="col-md-6">
                         <label class="control-label" for="image">Department Image</label>
-                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                	<img src="<?php echo $department_location;?>" class="img-responsive"/>
-                                </div>
-                                    <div>
-                                        <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="department_image"></span>
-                                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                    </div>
-                                </div>
-                            </div>
-                	</div>
-                </div>
+						<div class="fileinput fileinput-new" data-provides="fileinput">
+							<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+								<img src="<?php echo $department_location;?>" class="img-responsive"/>
+							</div>
+							<div>
+								<span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="department_image"></span>
+								<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+							</div>
+						</div>
+					</div>
+				</div>
                 
                 <div class="row">
                 	<div class="col-md-12">
@@ -76,6 +75,6 @@
 					<input type="submit" value="Add Department" class="login_btn btn btn-success btn-lg">
 				</div>
 				<?php
-					form_close();
+					echo form_close();
 				?>
 		</div>
