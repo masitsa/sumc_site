@@ -1,59 +1,62 @@
-
   <head>
-  	<!-- Begin Inspectlet Embed Code -->
-	<script type="text/javascript" id="inspectletjs">
-        window.__insp = window.__insp || [];
-        __insp.push(['wid', 1495970815]);
-        (function() {
-            function __ldinsp(){var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); }
-            if (window.attachEvent){
-                window.attachEvent('onload', __ldinsp);
-            }else{
-                window.addEventListener('load', __ldinsp, false);
-            }
-        })();
-    </script>
-    <!-- End Inspectlet Embed Code -->
-  	<meta http-equiv="Cache-control" content="public">
-    <title>Autospares | Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="<?php echo base_url();?>assets/css/bootstrap.css" rel="stylesheet" media="screen">
-    <!-- Sidemenu -->
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/side_menu.css" />
-    <!-- Search -->
-	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/search.css">
-    <!-- General -->
-	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css">
-    <!-- Animate -->
-	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/animate.css">
-    <!-- Font awesome -->
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/carousel-style.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/jquery.jscrollpane.css" media="all" />
-    <!-- Favicon -->
-    <link href="<?php echo base_url();?>assets/img/favicon.png" rel="shortcut icon" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="<?php echo base_url().'assets/themes/medicallink/'?>favicon.png">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
+    <title>MEDICAL-LINK :: Premium Medical Template</title>
     
-    <!-- Facebook Conversion Code for Autospares Web Conversions -->
-	<script>(function() {
-    var _fbq = window._fbq || (window._fbq = []);
-    if (!_fbq.loaded) {
-    var fbds = document.createElement('script');
-    fbds.async = true;
-    fbds.src = '//connect.facebook.net/en_US/fbds.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(fbds, s);
-    _fbq.loaded = true;
-    }
-    })();
-    window._fbq = window._fbq || [];
-    window._fbq.push(['track', '6017660222719', {'value':'0.01','currency':'USD'}]);
-    </script>
-    <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6017660222719&amp;cd[value]=0.01&amp;cd[currency]=USD&amp;noscript=1" /></noscript>
+    <link href="<?php echo base_url().'assets/themes/medicallink/'?>bootstrap3/css/bootstrap.css" rel="stylesheet">
+
+    <!-- main css -->
+    <link href="<?php echo base_url().'assets/themes/medicallink/'?>css/master.css" rel="stylesheet">
+    
+    <!-- mobile css -->
+    <link href="<?php echo base_url().'assets/themes/medicallink/'?>css/responsive.css" rel="stylesheet">
+    
+    <!-- FontAwesome Support -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/themes/medicallink/'?>css/fontawesome/font-awesome.min.css" />
+    <!-- FontAwesome Support -->
+    
+    <!-- Superfish menu -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/themes/medicallink/'?>css/superfish/superfish.css" />
+    <!-- Superfish menu -->
+    
+    <!-- Theme Color selector -->
+    <link href="<?php echo base_url().'assets/themes/medicallink/'?>js/theme-color-selector/theme-color-selector.css" type="text/css" rel="stylesheet">
+    <!-- Theme Color selector -->
+    
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/themes/medicallink/'?>js/owl-carousel/owl.carousel.css" />
+    <!-- Owl Carousel -->
+    
+    <!-- Typicons -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/themes/medicallink/'?>css/typicons/typicons.min.css" />
+    <!-- Typicons -->
+    
+    <!-- WOW animations -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/themes/medicallink/'?>js/wow/css/libs/animate.css" />
+    <!-- WOW animations -->
+    
+    <!-- MeanMenu (mobile) -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/themes/medicallink/'?>js/meanmenu/meanmenu.css" />
+    <!-- MeanMenu (mobile) -->
+    
+    <!-- Flexslider -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/themes/medicallink/'?>js/flexslider/flexslider-post.css" />
+    <!-- Flexslider -->
+    
+    <!-- PrettyPhoto -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/themes/medicallink/'?>js/prettyphoto/css/prettyPhoto.css" />
+    <!-- PrettyPhoto -->
+    
+    <!-- jQuery UI -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/themes/medicallink/'?>css/jquery-ui/jquery-ui.css" />
+    <!-- jQuery UI -->
+        
+    <!-- Development Google Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300italic,300,400italic,600,600italic,700,700italic,800,800italic%7COpen+Sans+Condensed:300,300italic,700%7CRaleway:400,200,300,100,600,500,700,800,900%7COswald:400,300,700%7CRoboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic%7CRoboto+Condensed:400,300,300italic,400italic,700,700italic%7CRoboto+Slab:400,100,300,700%7CLato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <!-- Development Google Fonts -->
+    
   </head>

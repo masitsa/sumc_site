@@ -158,12 +158,13 @@ $route['deactivate-comment/(:num)'] = 'admin/blog/deactivate_comment/$1';
 /*
 *	Blog Routes
 */
-$route['blog'] = 'blog';
-$route['blog/(:num)'] = 'blog/index/$1';
-$route['blog/(:num)/(:num)'] = 'blog/index/$1/$2';
-$route['blog/post/(:num)'] = 'blog/view_post/$1';
+$route['blog'] = 'site/blog';
+$route['blog/(:num)'] = 'site/blog/index/$1';
+$route['blog/(:num)/(:num)'] = 'site/blog/index/$1/$2';
+$route['blog/view-single/(:num)'] = 'site/blog/view_post/$1';
 $route['blog/category/(:num)'] = 'blog/index/$1';
 $route['blog/category/(:num)/(:num)'] = 'blog/index/$1/$2';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
+

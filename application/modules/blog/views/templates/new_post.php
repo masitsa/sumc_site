@@ -1,34 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <?php echo $this->load->view('blog/includes/header', '', TRUE);?>
-
   <body>
     
-
     
 
-    <div id="pm_layout_wrapper" class="pm-full-mode"><!-- Use wrapper for wide or boxed mode -->
+	<div id="pm_layout_wrapper" class="pm-full-mode"><!-- Use wrapper for wide or boxed mode -->
     
-        
-        <?php echo $this->load->view('site/includes/navigation', '', TRUE);?>
+    	  <?php echo $this->load->view('site/includes/navigation', '', TRUE);?>
         <!-- Sub-header area -->
-         <?php echo $this->load->view('blog/includes/sub_header', '', TRUE);?>
+         <?php
+         if($post_id > 1) 
+         {
+	         $title_name = $title;
+	         $data['title'] = $title_name;
+	         $data['category_id'] = $category_id;
+	         $data['created_by'] = $created_by;
+	         $data['ultra_mini_title'] = $ultra_mini_title;
+	         $data['post_title'] = $post_title;
+	         echo $this->load->view('blog/includes/sub_header', $data , TRUE);?>
         <!-- Sub-header area end -->
         
-        <!-- BODY CONTENT starts here -->
+       
         
+     
+ 		<!-- Sub-header area end -->
+        
+        <!-- BODY CONTENT starts here -->
                 
         <!-- PANEL 1 -->
-        <div class="container pm-containerPadding-top-110 pm-containerPadding-bottom-40">   
-            <?php echo $content;?>
+        <div class="container pm-containerPadding-top-110 pm-containerPadding-bottom-100">
+        
+        	<?php echo $content;?>
+        
         </div>
         <!-- PANEL 1 end -->
         
+        <!-- PANEL 2 -->
+        <div class="pm-column-container pm-containerPadding-bottom-50 pm-parallax-panel" style="background-color:#21BBC7; background-image:url(img/news-post/author-bg.jpg);" data-stellar-vertical-offset="-100" data-stellar-background-ratio="0.5">
         
+        	 <?php echo $this->load->view('blog/includes/about_author', $data, TRUE);?>
+        
+        </div>
+        <!-- PANEL 2 end -->
+        
+        <!-- PANEL 3 -->
+        <div class="container pm-containerPadding-top-100 pm-containerPadding-bottom-70">
+        	<?php echo $this->load->view('blog/includes/related_posts', $data, TRUE);?>
+        </div>
+        <!-- PANEL 3 end-->
+        
+        <!-- PANEL 4 -->
+       		<?php echo $this->load->view('blog/includes/blog_comments',$data , TRUE);
+
+		}
+		else
+		{
+
+       		
+		}
+        ?>
         <!-- BODY CONTENT end -->
         
-       <?php echo $this->load->view('blog/includes/footer', '', TRUE);?>
+     		<?php echo $this->load->view('blog/includes/footer', '', TRUE);?>
                 
        
     

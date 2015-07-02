@@ -1,193 +1,110 @@
-<?php
-$recent_query = $this->blog_model->get_recent_posts();
-
-if($recent_query->num_rows() > 0)
-{
-	$recent_posts = '';
-	
-	foreach ($recent_query->result() as $row)
-	{
-		$post_id = $row->post_id;
-		$post_title = $row->post_title;
-		$image = base_url().'assets/images/posts/thumbnail_'.$row->post_image;
-		$comments = $this->users_model->count_items('post_comment', 'post_id = '.$post_id);
-		
-		$recent_posts .= '
-			<div class="widgett">
-				  <div class="imgholder">
-					   <a href="'.site_url().'blog/post/'.$post_id.'" rel="bookmark" title="'.$post_title.'"><img src="'.$image.'" alt="'.$post_title.'"></a>
-				  </div>
-	
-				  <div class="wttitle">
-					   <h4><a href="'.site_url().'blog/post/'.$post_id.'" rel="bookmark" title="'.$post_title.'">'.$post_title.'</a></h4>
-				  </div>
-	
-				  <div class="details2">
-					   <a href="'.site_url().'blog/post/'.$post_id.'" title="'.$post_title.'">'.$comments.' Comments</a>
-				  </div>
-			 </div>
-		';
-	}
-}
-
-else
-{
-	$recent_posts = 'No posts yet';
-}
-
-$categories_query = $this->blog_model->get_all_active_category_parents();
-if($categories_query->num_rows() > 0)
-{
-	$categories = '';
-	foreach($categories_query->result() as $res)
-	{
-		$category_id = $res->blog_category_id;
-		$category_name = $res->blog_category_name;
-		
-		$children_query = $this->blog_model->get_all_active_category_children($category_id);
-		
-		//if there are children
-		if($children_query->num_rows > 0)
-		{
-			$categories .= '<li><a href="'.site_url().'blog/category/'.$category_id.'" title="View all posts filed under '.$category_name.'">'.$category_name.'</a><ul class="sub-menu">';
-			
-			foreach($children_query->result() as $res2)
-			{
-				$child_id = $res2->blog_category_id;
-				$child_name = $res2->blog_category_name;
-				
-				$categories .= '<li><a href="'.site_url().'blog/category/'.$child_id.'" title="View all posts filed under '.$child_name.'">'.$child_name.'</a></li>';
-			}
-			$categories .= '</ul></li>';
-		}
-		
-		//no childrent
-		else
-		{
-			$categories .= '<li><a href="'.site_url().'blog/category'.$category_id.'" title="View all posts filed under '.$category_name.'">'.$category_name.'</a></li>';
-		}
-	}
-}
-
-else
-{
-	$categories = 'No Categories';
-}
-$popular_query = $this->blog_model->get_popular_posts();
-
-if($popular_query->num_rows() > 0)
-{
-	$popular_posts = '';
-	
-	foreach ($popular_query->result() as $row)
-	{
-		$post_id = $row->post_id;
-		$post_title = $row->post_title;
-		$image = base_url().'assets/images/posts/thumbnail_'.$row->post_image;
-		$comments = $this->users_model->count_items('post_comment', 'post_id = '.$post_id);
-		
-		$popular_posts .= '
-			<div class="widgett">
-				  <div class="imgholder">
-					   <a href="'.site_url().'blog/post/'.$post_id.'" rel="bookmark" title="'.$post_title.'"><img src="'.$image.'" alt="'.$post_title.'"></a>
-				  </div>
-	
-				  <div class="wttitle">
-					   <h4><a href="'.site_url().'blog/post/'.$post_id.'" rel="bookmark" title="'.$post_title.'">'.$post_title.'</a></h4>
-				  </div>
-	
-				  <div class="details2">
-					   <a href="'.site_url().'blog/post/'.$post_id.'" title="'.$post_title.'">'.$comments.' Comments</a>
-				  </div>
-			 </div>
-		';
-	}
-}
-
-else
-{
-	$popular_posts = 'No posts views yet';
-}
-?>
-  <!-- ***************** - FOOTER - ***************** -->
-  <div id="footer">
-    <div class="totop">
-	<!-- ***************** - TO TOP BUTTON - ***************** -->
-      <div class="gototop">
-        <div class="arrowgototop"></div>
-      </div>
-    </div>
-
-    <div class="fshadow"></div>
-
-    <div class="socialfooter">
-      <div class="socialcategory">
-        <a target="_blank" class="facebooklinkfooter" href="http://www.facebook.com/GFlashDesign" title="Facebook"></a>
-		<a target="_blank" class="twitterlinkfooter" href="https://twitter.com/premiumcoding" title="Twitter"></a>
-		<a target="_blank" class="diggfooter" href="http://digg.com/" title="Digg"></a>
-		<a target="_blank" class="dribblefooter" href="http://dribbble.com/gljivec" title="Dribble"></a>
-		<a target="_blank" class="flickerlinkfooter" href="http://www.flickr.com/" title="Flicker "></a>
-		<a target="_blank" class="linkedinlinkfooter" href="http://www.linkedin.com/" title="Linkedin"></a>
-		<a target="_blank" class="rsslinkfooter" href="http://premiumcoding.com/feed" title="RSS"></a>
-      </div>
-    </div>
-	<!-- ***************** - FOOTER WIDGETS - ***************** -->
-    <div id="footerinside">
-      <div class="footer_widget">
+ <div class="pm-fat-footer pm-parallax-panel" data-stellar-background-ratio="0.5">
+            
+            <div class="container">
+                <div class="row">
+                
+                    <div class="col-lg-3 col-md-3 col-sm-12 pm-widget-footer">
+                    
+                        <h6 class="pm-fat-footer-title"><span>About</span> Medical-Link</h6>
+                        <div class="pm-fat-footer-title-divider"></div>
+                        
+                        <p>Medical-Link is a premium medical template designed by Pulsar Media.</p>
+                        
+                        <p>Medical-Link is perfect for anyone in the medical and health industry and can be used by health facilities, hospitals, walk-in clinics, dental offices, chiropractors, physiotherapists, pediatricians etc.</p>
+                        <p>Medical-Link offers many great features such as a custom slider system, testimonials carousel and a clean modern design.</p>
+                        
+                    </div>
+                    
+                    
+                    <div class="col-lg-3 col-md-3 col-sm-12 pm-widget-footer">
+                    
+                       <h6 class="pm-fat-footer-title"> <span>Request</span> an appointment</h6>
+                       <div class="pm-fat-footer-title-divider"></div>
+                       
+                       <ul class="pm-general-icon-list">
+                          <li>
+                            <span class="fa fa-mobile-phone pm-general-icon"></span>
+                            <p>+ 488 (0) 333.444.212</p>
+                          </li>
+                          <li>
+                            <span class="fa fa-inbox pm-general-icon"></span>
+                            <p><a href="mailto:info@medical-link.com">info@medical-link.com</a></p>
+                          </li>
+                          <li>
+                            <span class="fa fa-bars pm-general-icon"></span>
+                            <p><a href="#">Fill out our appointment form</a></p>
+                          </li>
+                       </ul>
+                        
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-3 col-sm-12 pm-widget-footer">
+                    
+                        <h6 class="pm-fat-footer-title"><span>Latest</span> Tweets</h6>
+                        <div class="pm-fat-footer-title-divider"></div>
+                        
+                        <div id="pm-twitter-news"></div>
+                        
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-3 col-sm-12 pm-widget-footer">
+                    
+                        <h6 class="pm-fat-footer-title"><span>Popular</span> Posts</h6>
+                        <div class="pm-fat-footer-title-divider"></div>
+                        
+                        <ul class="pm-recent-blog-posts">
+                            <!-- Post -->
+                            <li>
+                                <div style="background-image:url(img/home/p1.jpg);" class="pm-recent-blog-post-thumb"></div>
+                                <div class="pm-recent-blog-post-details">
+                                    <a href="news-post.html">Severe stroke patients recover better with prompt stent action</a>
+                                    <p class="pm-date">Jan 29, 2015</p>
+                                    <div class="pm-recent-blog-post-divider"></div>
+                                </div>
+                            </li>
+                            <!-- Post end -->
+                            <!-- Post -->
+                            <li>
+                                <div style="background-image:url(img/home/p2.jpg);" class="pm-recent-blog-post-thumb"></div>
+                                <div class="pm-recent-blog-post-details">
+                                    <a href="news-post.html">High fitness levels reduce hypertension risk</a>
+                                    <p class="pm-date">Jan 25, 2015</p>
+                                    <div class="pm-recent-blog-post-divider"></div>
+                                </div>
+                            </li>
+                            <!-- Post end -->
+                        </ul>
+                        
+                    </div>
+                    
+                </div>  
+            </div>
+            
+        </div>
         
-        <div class="footer_widget2">
-          <div class="widget-1 widget-first widget category_posts">
-            <h3><span>Popular</span> Posts</h3>
-			<?php echo $popular_posts;?>
-          </div>
-        </div>
+        <footer>
 
-        <div class="footer_widget3">
-          <div class="widget-1 widget-first widget widget_categories">
-            <h3>Categories</h3>
+            
+            <div class="container pm-containerPadding20">
+                <div class="row">
+                
+                    <div class="col-lg-4 col-md-4 col-sm-12 pm-center-mobile">
+                        <img src="img/medical-link.jpg" width="264" height="81" class="img-responsive pm-inline" alt="Medical-Link">
+                    </div>
+                    
+                    <div class="col-lg-8 col-md-8 col-sm-12">
+                        <ul class="pm-footer-navigation">
+                            <li><a href="index.html" class="active">Home</a></li>
+                            <li><a href="news.html">News</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="store.html">Store</a></li>
+                            <li><a href="contact-us.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                
+                </div>
+            </div>
 
-            <ul>
-              <?php echo $categories;?>
-            </ul>
-          </div>
-        </div>
-
-        <div class="footer_widget4">
-          <div class="widget-1 widget-first widget recent_posts">
-            <h3><span>Recent</span> Posts</h3>
-            <?php echo $recent_posts;?>
-        </div>
-      </div>
-    </div>
-    </div>
-<!-- ***************** - LOWER FOOTER - ***************** -->
-    <div id="footerbwrap">
-      <div id="footerb">
-        <div class="footernav">
-          <div class="menu-footer-container">
-            <ul id="menu-footer" class="footernav">
-                <li> <a href="<?php echo site_url().'home';?>"> Home </a> </li>
-                <li> <a href="<?php echo site_url().'shop';?>"> Shop </a> </li>
-                <li> <a href="<?php echo site_url().'blog';?>"> Blog </a> </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="copyright">
-          &copy; Inches2Style <?php echo date('Y');?>
-        </div>
-      </div>
-    </div>
-  </div><script type='text/javascript' src='<?php echo base_url().'assets/themes/darx/';?>js/gistfile_pmc.js?ver=3.4.1'>
-</script><script type='text/javascript' src='<?php echo base_url().'assets/themes/darx/';?>js/jquery-ui-1.8.20.custom.min.js?ver=3.4.1'>
-</script><script type="text/javascript" charset="utf-8">
-//<![CDATA[
-
-  jQuery(document).ready(function(){
-
-    jQuery("a[rel^='lightbox']").prettyPhoto({theme:'light_rounded',overlay_gallery: false,show_title: false});
-
-  });
-
-  //]]>
-  </script>
+                
+        </footer>
