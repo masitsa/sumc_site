@@ -109,5 +109,5 @@
 
 
 <?php
-    if(isset($links)){echo '<div class="center-align">'.$links.'</div>';}
+    if(isset($links){echo '<div class="center-align">'.$links.'</div>';}
 ?>

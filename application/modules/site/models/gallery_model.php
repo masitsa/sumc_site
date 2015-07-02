@@ -1,6 +1,6 @@
 <?php
 
-class Blog_model extends CI_Model 
+class Gallery_model extends CI_Model 
 {	
 	/*
 	*	Retrieve all posts
@@ -19,4 +19,5 @@ class Blog_model extends CI_Model
 		
 		return $query;
 	}
+	
 }

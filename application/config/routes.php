@@ -168,3 +168,16 @@ $route['blog/category/(:num)/(:num)'] = 'blog/index/$1/$2';
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
 
+/*
+*	Gallery Routes
+*/
+$route['gallery'] = 'site/gallery';
+
+
+/*
+*	Gallery Routes
+*/
+$route['departments'] = 'site/departments';
+$route['departments/(:num)'] = 'site/departments/index/$1';
+$route['departments/(:num)/(:num)'] = 'site/departments/index/$1/$2';
+$route['departments/view-single/(:num)'] = 'site/departments/view_department/$1';

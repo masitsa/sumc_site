@@ -6,7 +6,8 @@ class Gallery extends MX_Controller {
 	{
 		parent:: __construct();
 		$this->load->model('admin/users_model');
-		$this->load->model('gallery_model');
+		$this->load->model('site/gallery_model');
+		$this->load->model('site/site_model');
 	}
     
 	/*
@@ -55,7 +56,7 @@ class Gallery extends MX_Controller {
 		{
 			$data['content'] = '<p>There are no gallery posted yet</p>';
 		}
-		$this->load->view("gallery/templates/gallery", $data);
+		$this->load->view("site/gallery/templates/gallery", $data);
 	}
 	
 	
