@@ -190,9 +190,9 @@ class Blog_model extends CI_Model
 	public function get_post($post_id)
 	{
 		//retrieve all users
-		$this->db->from('post');
+		$this->db->from('post,blog_category');
 		$this->db->select('*');
-		$this->db->where('post_id = '.$post_id);
+		$this->db->where('post.blog_category_id = blog_category.blog_category_id AND post_id = '.$post_id);
 		$query = $this->db->get();
 		
 		return $query;
@@ -531,6 +531,41 @@ class Blog_model extends CI_Model
 		$query = $this->db->get();
 		
 		return $query;
+	}
+
+	public function check_previous_post($post_id)
+	{
+		//retrieve all users
+		$this->db->from('post');
+		$this->db->select('*');
+		$this->db->where('post_status = 1 AND post_id < '.$post_id);
+		$query = $this->db->get();
+		
+		if($query->num_rows() > 0)
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+	public function check_post_post($post_id)
+	{
+		//retrieve all users
+		$this->db->from('post');
+		$this->db->select('*');
+		$this->db->where('post_status = 1 AND post_id > '.$post_id);
+		$query = $this->db->get();
+				
+		if($query->num_rows() > 0)
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
 	}
 	
 	/*
