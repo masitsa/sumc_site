@@ -24,6 +24,7 @@
 				$blog_category_name = $row->blog_category_name;
 				$blog_category_id = $row->blog_category_id;
 				$post_title = $row->post_title;
+				$web_name = $this->site_model->create_web_name($post_title);
 				$post_status = $row->post_status;
 				$post_views = $row->post_views;
 				$image = base_url().'assets/images/posts/'.$row->post_image;
@@ -123,22 +124,22 @@
 		                    <div class="pm-standalone-news-post-overlay">
 		                        
 		                        <div class="pm-standalone-news-post-icon">
-		                            <img src="img/news/post-icon.jpg" width="33" height="41" alt="icon">
+		                            <img src="'.base_url().'assets/themes/medicallink/img/logo-small.png" alt="icon">
 		                        </div>
 		                        
-		                        <h6 class="pm-standalone-news-post-title"><a href="'.site_url().'blog/view-single/'.$post_id.'">'.$post_title.'</a></h6>
+		                        <h6 class="pm-standalone-news-post-title"><a href="'.site_url().'blog/view-single/'.$web_name.'">'.$post_title.'</a></h6>
 		                        
 		                        <p class="pm-standalone-news-post-date">'.$created_on.' by '.$created_by.'</p>
-		                        <a href="'.site_url().'blog/view-single/'.$post_id.'#comments" class="pm-standalone-news-post-comment-count">'.$total_comments.' '.$title.'</a>
+		                        <a href="'.site_url().'blog/view-single/'.$web_name.'#comments" class="pm-standalone-news-post-comment-count">'.$total_comments.' '.$title.'</a>
 		                        
 		                    </div>
 		                
 		                </div>
 		                                        
 		                <div class="pm-standalone-news-post-excerpt">
-		                    <p>'.$mini_desc.' <a href="'.site_url().'blog/view-single/'.$post_id.'">[...]</a> </p>
+		                    <p>'.$mini_desc.' <a href="'.site_url().'blog/view-single/'.$web_name.'">[...]</a> </p>
 		                    
-		                    <a href="'.site_url().'blog/view-single/'.$post_id.'" class="pm-rounded-btn no-border pm-center-align">view post  <i class="fa fa-plus"></i></a>
+		                    <a href="'.site_url().'blog/view-single/'.$web_name.'" class="pm-rounded-btn no-border pm-center-align">view post  <i class="fa fa-plus"></i></a>
 		                    
 		                </div>
 		                
@@ -161,7 +162,7 @@
             <!-- Load more -->                    
             <ul class="pm-post-loaded-info news">
                 <li>
-                    <p>Viewing <strong>5</strong> of <strong>42</strong> posts</p>
+                    <p>Viewing <strong><?php echo $last;?></strong> of <strong><?php echo $total;?></strong> posts</p>
                 </li>
                 <li>
                     <a href="#">Load more &nbsp; <i class="fa fa-cloud-download"></i></a>

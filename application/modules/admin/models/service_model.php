@@ -72,7 +72,7 @@ class Service_model extends CI_Model
 		$this->db->from($table);
 		$this->db->select('*');
 		$this->db->where($where);
-		$this->db->order_by('service_name');
+		$this->db->order_by('department.department_name, service.service_name');
 		$query = $this->db->get('', $per_page, $page);
 		
 		return $query;

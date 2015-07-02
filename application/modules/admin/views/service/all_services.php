@@ -39,22 +39,9 @@
 					$service_id = $cat->service_id;
 					$service_status = $cat->service_status;
 					$service_name = $cat->service_name;
+					$department_name = $cat->department_name;
 					$service_image_name = 'thumbnail_'.$cat->service_image_name;
 					$count++;
-					$department_name = '';
-					if($active_departments->num_rows() > 0)
-					{
-						foreach($active_departments->result() as $res)
-						{
-							$department_id = $res->department_id;
-							
-							if($dept_id ==$department_id)
-							{
-								$department_name = $res->department_name;
-								break;
-							}
-						}
-					}
 					
 					if($service_status == 1){
 						$status = '<span class="label label-success">Active</span>';

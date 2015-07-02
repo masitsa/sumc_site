@@ -29,7 +29,7 @@
         <!-- BODY CONTENT starts here -->
                 
         <!-- PANEL 1 -->
-        <div class="container pm-containerPadding-top-110 pm-containerPadding-bottom-100">
+        <div class="container pm-containerPadding-top-110 pm-containerPadding-bottom-50">
         
         	<?php echo $content;?>
         
@@ -37,15 +37,15 @@
         <!-- PANEL 1 end -->
         
         <!-- PANEL 2 -->
-        <div class="pm-column-container pm-containerPadding-bottom-50 pm-parallax-panel" style="background-color:#21BBC7; background-image:url(img/news-post/author-bg.jpg);" data-stellar-vertical-offset="-100" data-stellar-background-ratio="0.5">
+        <!--<div class="pm-column-container pm-containerPadding-bottom-50 pm-parallax-panel" style="background-color:#21BBC7; background-image:url(img/news-post/author-bg.jpg);" data-stellar-vertical-offset="-100" data-stellar-background-ratio="0.5">
         
-        	 <?php echo $this->load->view('blog/includes/about_author', $data, TRUE);?>
+        	 <?php //echo $this->load->view('blog/includes/about_author', $data, TRUE);?>
         
-        </div>
+        </div>-->
         <!-- PANEL 2 end -->
         
         <!-- PANEL 3 -->
-        <div class="container pm-containerPadding-top-100 pm-containerPadding-bottom-70">
+        <div class="container pm-containerPadding-top-10 pm-containerPadding-bottom-10">
         	<?php echo $this->load->view('blog/includes/related_posts', $data, TRUE);?>
         </div>
         <!-- PANEL 3 end-->
@@ -62,7 +62,7 @@
         ?>
         <!-- BODY CONTENT end -->
         
-     		<?php echo $this->load->view('blog/includes/footer', '', TRUE);?>
+     		<?php echo $this->load->view('site/includes/footer', '', TRUE);?>
                 
        
     

@@ -29,7 +29,7 @@
                         	<div class="pm-standalone-news-post-overlay">
                             	
                                 <div class="pm-standalone-news-post-icon">
-                           	    	<img src="<?php echo base_url().'assets/themes/medicallink/'?>img/home/post-icon.jpg" width="33" height="41" alt="icon">
+                           	    	<img src="<?php echo base_url().'assets/themes/medicallink/'?>img/logo-small.png" alt="icon">
                                 </div>
                                 
                                 <h6 class="pm-standalone-news-post-title"><a href="#">asking the right questions when meeting your family doctor</a></h6>
@@ -64,7 +64,7 @@
                         	<div class="pm-standalone-news-post-overlay">
                             	
                                 <div class="pm-standalone-news-post-icon">
-                           	    	<img src="<?php echo base_url().'assets/themes/medicallink/'?>img/home/post-icon.jpg" width="33" height="41" alt="icon">
+                           	    	<img src="<?php echo base_url().'assets/themes/medicallink/'?>img/logo-small.png" width="33" height="41" alt="icon">
                                 </div>
                                 
                                 <h6 class="pm-standalone-news-post-title"><a href="#">The difficulty of coordinating primary care</a></h6>
@@ -99,7 +99,7 @@
                         	<div class="pm-standalone-news-post-overlay">
                             	
                                 <div class="pm-standalone-news-post-icon">
-                           	    	<img src="<?php echo base_url().'assets/themes/medicallink/'?>img/home/post-icon.jpg" width="33" height="41" alt="icon">
+                           	    	<img src="<?php echo base_url().'assets/themes/medicallink/'?>img/logo-small.png" width="33" height="41" alt="icon">
                                 </div>
                                 
                                 <h6 class="pm-standalone-news-post-title"><a href="#">what i learned from the next generation of doctors</a></h6>

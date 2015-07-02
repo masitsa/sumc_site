@@ -1,13 +1,49 @@
 <?php
-$related_query = $this->blog_model->get_related_posts($category_id, $post_id);
+//related posts
+$blog_category_id = $row->blog_category_id;
+$related_posts_query = $this->blog_model->get_related_posts($blog_category_id, $post_id);
 
-if($related_query->num_rows() > 0)
+if($related_posts_query->num_rows() > 0)
 {
-    foreach ($related_query->result() as $key) {
-        # code...
-        
-    }
+	$related_posts = '';
+	$count = 0;
+	
+	foreach ($related_posts_query->result() as $row)
+	{
+		$post_id = $row->post_id;
+		$post_title = $row->post_title;
+		$created = date('jS M Y',strtotime($row->created));
+		$image = base_url().'assets/images/posts/thumbnail_'.$row->post_image;
+		$comments = $this->users_model->count_items('post_comment', 'post_id = '.$post_id);
+		$web_name = $this->site_model->create_web_name($post_title);
+		$count++;
+		
+		if($count == 4)
+		{
+			$last = 'last';
+		}
+		
+		else
+		{
+			$last = '';
+		}
+		$related_posts .= '
+			<li>
+				<div class="pm-related-blog-post-thumb" style="background-image:url('.$image.');"></div>
+				<div class="pm-related-blog-post-details">
+					<a href="'.site_url().'blog/view-single/'.$web_name.'">'.$post_title.'</a>
+					<p class="pm-date">'.$created.'</p>
+				</div>
+			</li>
+		';
+	}
 }
+
+else
+{
+	$related_posts = 'No posts views yet';
+}
+
 ?>
 
 <div class="row">
@@ -19,33 +55,7 @@ if($related_query->num_rows() > 0)
         <div class="pm-single-blog-post-related-posts">
         
         	<ul class="pm-related-blog-posts">
-                <!-- Post -->
-                <li>
-                    <div class="pm-related-blog-post-thumb" style="background-image:url(img/sidebar/post1.jpg);"></div>
-                    <div class="pm-related-blog-post-details">
-                        <a href="news-post.html">Lorem ipsum dolor sit amet consectetur adipiscing elit.</a>
-                        <p class="pm-date">Jan 29, 2015 by Dr. Jane Williams</p>
-                    </div>
-                </li>
-                <!-- Post end -->
-                <!-- Post -->
-                <li>
-                    <div class="pm-related-blog-post-thumb" style="background-image:url(img/sidebar/post2.jpg);"></div>
-                    <div class="pm-related-blog-post-details">
-                        <a href="news-post.html">Pellentesque congue semper massa vitae consectetur. </a>
-                        <p class="pm-date">Jan 29, 2015 by Dr. Jane Williams</p>
-                    </div>
-                </li>
-                <!-- Post end -->
-                <!-- Post -->
-                <li>
-                    <div class="pm-related-blog-post-thumb" style="background-image:url(img/sidebar/post3.jpg);"></div>
-                    <div class="pm-related-blog-post-details">
-                        <a href="news-post.html">Phasellus vestibulum et velit at fringilla curabitur elementum.</a>
-                        <p class="pm-date">Jan 29, 2015 by Dr. Jane Williams</p>
-                    </div>
-                </li>
-                <!-- Post end -->
+                <?php echo $related_posts;?>
             </ul>
         
         </div>

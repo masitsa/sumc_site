@@ -88,7 +88,7 @@
                 	<div class="col-md-12">
                         <div class="form-group">
                             <label class="col-md-2 control-label" for="service_description">Service description</label>
-                            <div class="col-md-10">
+                            <div class="col-md-10" style="height:500px; margin-bottom:20px;">
                             	<textarea class="cleditor" name="service_description"><?php echo set_value("service_description");?></textarea>
                             </div>
                         </div>

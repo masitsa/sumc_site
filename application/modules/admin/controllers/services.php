@@ -28,8 +28,8 @@ class Services extends admin {
 	*/
 	public function index() 
 	{
-		$where = 'service_id > 0';
-		$table = 'service';
+		$where = 'service.department_id = department.department_id';
+		$table = 'service, department';
 		$segment = 3;
 		//pagination
 		$this->load->library('pagination');

@@ -1,4 +1,46 @@
+<?php
 
+$company_details = $this->site_model->get_contacts();
+
+$popular_query = $this->blog_model->get_popular_posts();
+
+if($popular_query->num_rows() > 0)
+{
+	$popular_posts = '';
+	$count = 0;
+	foreach ($popular_query->result() as $row)
+	{
+		$count++;
+		
+		if($count < 3)
+		{
+			$post_id = $row->post_id;
+			$post_title = $row->post_title;
+			$image = base_url().'assets/images/posts/thumbnail_'.$row->post_image;
+			$comments = $this->users_model->count_items('post_comment', 'post_id = '.$post_id);
+			$description = $row->post_content;
+			$mini_desc = implode(' ', array_slice(explode(' ', $description), 0, 10));
+			$created = date('jS M Y',strtotime($row->created));
+			
+			$popular_posts .= '
+				<li>
+					<div style="background-image:url('.$image.');" class="pm-recent-blog-post-thumb"></div>
+					<div class="pm-recent-blog-post-details">
+						<a href="'.site_url().'blog/view-single/'.$post_id.'">'.$mini_desc.'</a>
+						<p class="pm-date">'.$created.'</p>
+						<div class="pm-recent-blog-post-divider"></div>
+					</div>
+				</li>
+			';
+		}
+	}
+}
+
+else
+{
+	$popular_posts = 'There are no posts yet';
+}
+?>
         <div class="pm-fat-footer pm-parallax-panel" data-stellar-background-ratio="0.5">
         	
             <div class="container">
@@ -42,26 +84,7 @@
                         <div class="pm-fat-footer-title-divider"></div>
                         
                         <ul class="pm-recent-blog-posts">
-                            <!-- Post -->
-                            <li>
-                                <div style="background-image:url(<?php echo base_url().'assets/themes/medicallink/'?>img/home/p1.jpg);" class="pm-recent-blog-post-thumb"></div>
-                                <div class="pm-recent-blog-post-details">
-                                    <a href="news-post.html">Severe stroke patients recover better with prompt stent action</a>
-                                    <p class="pm-date">Jan 29, 2015</p>
-                                    <div class="pm-recent-blog-post-divider"></div>
-                                </div>
-                            </li>
-                            <!-- Post end -->
-                            <!-- Post -->
-                            <li>
-                                <div style="background-image:url(<?php echo base_url().'assets/themes/medicallink/'?>img/home/p2.jpg);" class="pm-recent-blog-post-thumb"></div>
-                                <div class="pm-recent-blog-post-details">
-                                    <a href="news-post.html">High fitness levels reduce hypertension risk</a>
-                                    <p class="pm-date">Jan 25, 2015</p>
-                                    <div class="pm-recent-blog-post-divider"></div>
-                                </div>
-                            </li>
-                            <!-- Post end -->
+                            <?php echo $popular_posts;?>
                         </ul>
                         
                     </div>

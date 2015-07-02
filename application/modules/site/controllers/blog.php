@@ -15,17 +15,28 @@ class Blog extends MX_Controller {
 	*	Default action is to show all the posts
 	*
 	*/
-	public function index($category = 0) 
+	public function index($category = '__', $search = '__') 
 	{
 		$where = 'post.blog_category_id = blog_category.blog_category_id AND post.post_status = 1';
 		$segment = 3;
 		$base_url = base_url().'blog/'.$category;
-		if($category > 0)
+		
+		if($search != '__')
 		{
 			$segment = 4;
-			$base_url = base_url().'blog/category/'.$category;
-			$where .= ' AND (blog_category.blog_category_id = '.$category.' OR blog_category.blog_category_parent = '.$category.')';
+			$search_web = $this->site_model->decode_web_name($search);
+			$base_url = base_url().'blog/search/'.$search;
+			$where .= ' AND (post.post_title LIKE \'%'.$search_web.'%\' OR post.post_content LIKE \'%'.$search_web.'%\' OR blog_category.blog_category_name LIKE \'%'.$search_web.'%\')';
 		}
+		
+		if($category != '__')
+		{
+			$category_web = $this->site_model->decode_web_name($category);
+			$segment = 4;
+			$base_url = base_url().'blog/category/'.$category;
+			$where .= ' AND (blog_category.blog_category_name = '.$category_web.' OR blog_category.blog_category_parent = blog_category.blog_category_id)';
+		}
+		
 		$table = 'post, blog_category';
 		//pagination
 		$this->load->library('pagination');
@@ -54,6 +65,18 @@ class Blog extends MX_Controller {
 		{
 			$v_data['query'] = $query;
 			$v_data['page'] = $page;
+			$v_data["first"] = $page + 1;
+			$v_data["total"] = $config['total_rows'];
+			
+			if($v_data["total"] < $config["per_page"])
+			{
+				$v_data["last"] = $page + $v_data["total"];
+			}
+			
+			else
+			{
+				$v_data["last"] = $page + $config["per_page"];
+			}
 			$data['content'] = $this->load->view('blog/blog_list', $v_data, true);
 		}
 		
@@ -64,67 +87,84 @@ class Blog extends MX_Controller {
 		$this->load->view("blog/templates/blog", $data);
 	}
 	
-	public function view_post($post_id)
+	public function view_post($web_name)
 	{
-		$this->blog_model->update_views_count($post_id);
-		$query = $this->blog_model->get_post($post_id);
-		$v_data['comments_query'] = $this->blog_model->get_post_comments($post_id);
+		$post_title = $this->site_model->decode_web_name($web_name);
+		$post_id = $this->blog_model->get_post_id($post_title);
 		
-		if ($query->num_rows() > 0)
+		if($post_id)
 		{
-			$administrators = $this->users_model->get_all_administrators();
-			if ($administrators->num_rows() > 0)
-			{
-				$admins = $administrators->result();
-			}
+			$this->blog_model->update_views_count($post_id);
+			$query = $this->blog_model->get_post($post_id);
+			$v_data['comments_query'] = $this->blog_model->get_post_comments($post_id);
 			
-			else
+			if ($query->num_rows() > 0)
 			{
-				$admins = NULL;
-			}
-			
-			foreach ($query->result() as $row)
-			{
-				$post_id = $row->post_id;
-				$blog_category_name = $row->blog_category_name;
-				$blog_category_id = $row->blog_category_id;
-				$post_title = $row->post_title;
-				$created_by = $row->created_by;
-				$description = $row->post_content;
-				$ultra_mini_title = implode(' ', array_slice(explode(' ', $post_title), 0, 4));
 				$administrators = $this->users_model->get_all_administrators();
 				if ($administrators->num_rows() > 0)
 				{
 					$admins = $administrators->result();
-					if($admins != NULL)
-					{
-						foreach($admins as $adm)
-						{
-							$user_id = $adm->user_id;
-							
-							if($user_id == $created_by)
-							{
-								$created_by_name = $adm->first_name;
-							}
-						}
-					}
 				}
 				
 				else
 				{
 					$admins = NULL;
 				}
+				
+				foreach ($query->result() as $row)
+				{
+					$post_id = $row->post_id;
+					$blog_category_name = $row->blog_category_name;
+					$blog_category_id = $row->blog_category_id;
+					$post_title = $row->post_title;
+					$created_by = $row->created_by;
+					$description = $row->post_content;
+					$ultra_mini_title = implode(' ', array_slice(explode(' ', $post_title), 0, 4));
+					$administrators = $this->users_model->get_all_administrators();
+					if ($administrators->num_rows() > 0)
+					{
+						$admins = $administrators->result();
+						if($admins != NULL)
+						{
+							foreach($admins as $adm)
+							{
+								$user_id = $adm->user_id;
+								
+								if($user_id == $created_by)
+								{
+									$created_by_name = $adm->first_name;
+								}
+							}
+						}
+					}
+					
+					else
+					{
+						$admins = NULL;
+					}
+				}
+				$data['post_id'] = $post_id;
+				$data['post_title'] = $post_title;
+				$data['created_by'] = $created_by;
+				$data['category_id'] = $blog_category_id;
+				$data['ultra_mini_title'] = $ultra_mini_title;
+				$data['title'] = $post_title;
+				$v_data['row'] = $query->row();
+				$data['content'] = $this->load->view('blog/single_post', $v_data, true);
 			}
-			$data['post_id'] = $post_id;
-			$data['post_title'] = $post_title;
-			$data['created_by'] = $created_by;
-			$data['category_id'] = $blog_category_id;
-			$data['ultra_mini_title'] = $ultra_mini_title;
-			$data['title'] = $post_title;
-			$v_data['row'] = $query->row();
-			$data['content'] = $this->load->view('blog/single_post', $v_data, true);
+			
+			else
+			{
+				$data['post_id'] = 0;
+				$data['created_by'] = 0;
+				$data['category_id'] = 0;
+				$data['ultra_mini_title'] = '';
+				$data['post_title'] = '';
+				$data['content'] = 'Post not found';
+				$data['title'] = 'No active posts are available';
+			}
 		}
-		
+			
 		else
 		{
 			$data['post_id'] = 0;
@@ -135,7 +175,6 @@ class Blog extends MX_Controller {
 			$data['content'] = 'Post not found';
 			$data['title'] = 'No active posts are available';
 		}
-		
 		
 		$this->load->view('blog/templates/new_post', $data);
 	}
@@ -173,5 +212,25 @@ class Blog extends MX_Controller {
 			}
 		}
 	}
-	
+    
+	/*
+	*
+	*	Search for a product
+	*
+	*/
+	public function search()
+	{
+		$search = $this->input->post('search_item');
+		
+		if(!empty($search))
+		{
+			$web_name = $this->site_model->create_web_name($search);
+			redirect('blog/search/'.$web_name);
+		}
+		
+		else
+		{
+			redirect('blog');
+		}
+	}
 }

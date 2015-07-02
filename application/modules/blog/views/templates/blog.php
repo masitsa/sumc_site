@@ -13,7 +13,7 @@
         
         <?php echo $this->load->view('site/includes/navigation', '', TRUE);?>
         <!-- Sub-header area -->
-         <?php echo $this->load->view('blog/includes/sub_header', '', TRUE);?>
+         <?php if(isset($post_id)){echo $this->load->view('blog/includes/sub_header', '', TRUE);}?>
         <!-- Sub-header area end -->
         
         <!-- BODY CONTENT starts here -->
@@ -28,7 +28,7 @@
         
         <!-- BODY CONTENT end -->
         
-       <?php echo $this->load->view('blog/includes/footer', '', TRUE);?>
+       <?php echo $this->load->view('site/includes/footer', '', TRUE);?>
                 
        
     

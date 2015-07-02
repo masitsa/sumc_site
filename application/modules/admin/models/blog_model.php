@@ -724,5 +724,22 @@ class Blog_model extends CI_Model
 		
 		return $query;
 	}
+	
+	public function get_post_id($post_title)
+	{
+		//retrieve all users
+		$this->db->from('post');
+		$this->db->select('post_id');
+		$this->db->where('post_title', $post_title);
+		$query = $this->db->get();
+		$post_id = FALSE;
+		if($query->num_rows() > 0)
+		{
+			$row = $query->row();
+			$post_id = $row->post_id;
+		}
+		
+		return $post_id;
+	}
 }
 ?>
