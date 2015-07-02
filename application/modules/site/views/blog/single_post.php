@@ -106,7 +106,7 @@ $count = 0;
             <div class="pm-single-news-post-overlay">
                 
                 <div class="pm-single-news-post-icon">
-                    <img src="img/news/post-icon.jpg" width="33" height="41" alt="icon">
+                    <img src="<?php echo base_url().'assets/themes/medicallink/img/logo-small.png';?>" alt="icon">
                 </div>
                 
                 <h6 class="pm-single-news-post-title"><a href="<?php echo site_url();?>blog/view-single/<?php echo $post_id;?>"><?php echo $post_title;?></a></h6>

@@ -5,7 +5,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="<?php echo base_url().'assets/themes/medicallink/'?>favicon.png">
 
-    <title>MEDICAL-LINK :: Premium Medical Template</title>
+    <title>SUMC | Blog</title>
     
     <link href="<?php echo base_url().'assets/themes/medicallink/'?>bootstrap3/css/bootstrap.css" rel="stylesheet">
 

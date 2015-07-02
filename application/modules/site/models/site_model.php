@@ -246,16 +246,30 @@ class Site_model extends CI_Model
 		
 		$navigation = 
 		'
-			<li><a href="#" class="'.$home.'">Home</a></li>
+			<li><a href="'.site_url().'home" class="'.$home.'">Home</a></li>
 			<li><a href="#" class="'.$about.'">About us</a></li>
 			<li><a href="#" class="'.$services.'">Services</a></li>
 			<li><a href="#" class="'.$departments.'">Departments</a></li>
-			<li><a href="#" class="'.$blog.'">Blog</a></li>
+			<li><a href="'.site_url().'blog" class="'.$blog.'">Blog</a></li>
 			<li><a href="#" class="'.$contact.'">Contact</a></li>
 			
 		';
 		
 		return $navigation;
+	}
+	
+	public function create_web_name($field_name)
+	{
+		$web_name = str_replace(" ", "-", $field_name);
+		
+		return $web_name;
+	}
+	
+	public function decode_web_name($web_name)
+	{
+		$field_name = str_replace("-", " ", $web_name);
+		
+		return $field_name;
 	}
 }
 ?>

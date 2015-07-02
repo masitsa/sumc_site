@@ -13,6 +13,7 @@ class Site extends CI_Controller
 		parent:: __construct();
 		
 		$this->load->model('site_model');
+		$this->load->model('admin/blog_model');
 		
 		$this->slideshow_location = base_url().'assets/slideshow/';
 		$this->service_location = base_url().'assets/service/';
@@ -29,9 +30,6 @@ class Site extends CI_Controller
 		//Retrieve active slides
 		$data['slides'] = $this->site_model->get_slides();
 		$data['services'] = $this->site_model->get_services();
-		$data['company_details'] = $this->site_model->get_contacts();
-		$data['jobs'] = $this->site_model->get_jobs();
-		$data['loans'] = $this->site_model->get_loans();
 		
 		$data['slideshow_location'] = $this->slideshow_location;
 		$data['service_location'] = $this->service_location;
@@ -44,8 +42,6 @@ class Site extends CI_Controller
 	
 	public function about()
 	{
-		$data['company_details'] = $this->site_model->get_contacts();
-		
 		$v_data['title'] = 'About us';
 		$v_data['class'] = '';
 		$v_data['content'] = $this->load->view("about", $data, TRUE);
