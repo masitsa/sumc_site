@@ -184,7 +184,7 @@ class Blog extends MX_Controller {
 	*	Add a new comment
 	*
 	*/
-	public function add_comment($post_id) 
+	public function add_comment($post_id, $web_name) 
 	{
 		//form validation rules
 		$this->form_validation->set_rules('post_comment_description', 'Comment', 'required|xss_clean');
@@ -194,7 +194,7 @@ class Blog extends MX_Controller {
 		//if form has been submitted
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->view_post($post_id);
+			redirect('blog/view-single/'.$web_name);
 		}
 		
 		else
@@ -202,13 +202,13 @@ class Blog extends MX_Controller {
 			if($this->blog_model->add_comment_user($post_id))
 			{
 				$this->session->set_userdata('success_message', 'Comment added successfully. Pending approval by admin');
-				redirect('blog/post/'.$post_id);
+				redirect('blog/view-single/'.$web_name);
 			}
 			
 			else
 			{
 				$this->session->set_userdata('error_message', 'Could not add comment. Please try again');
-				$this->view_post($post_id);
+				redirect('blog/view-single/'.$web_name);
 			}
 		}
 	}

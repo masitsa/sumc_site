@@ -44,6 +44,8 @@
             ';
         }
     }
+	
+	$web_name = $this->site_model->create_web_name($post_title);
 
 ?>
 
@@ -82,31 +84,23 @@
                 
                 <div class="row pm-containerPadding-top-20">
                     
-                    <form name="pm-submit-comment-form" action="post">
+                    <form method="post" action="<?php echo site_url().'blog/add_comment/'.$post_id.'/'.$web_name;?>">
                     
                         <div class="col-lg-4 col-md-4 col-sm-12">
-                            <input name="pm-comment-name" type="text" placeholder="Name *" class="pm-comment-form-textfield">
+                            <input name="name" type="text" placeholder="Name *" class="pm-comment-form-textfield">
                         </div>
                         
                         <div class="col-lg-4 col-md-4 col-sm-12">
-                            <input name="pm-comment-email" type="text" placeholder="Email *" class="pm-comment-form-textfield">
-                        </div>
-                        
-                        <div class="col-lg-4 col-md-4 col-sm-12">
-                            <input name="pm-comment-website" type="text" placeholder="Website" class="pm-comment-form-textfield">
+                            <input name="email" type="text" placeholder="Email *" class="pm-comment-form-textfield">
                         </div>
                         
                         <div class="col-lg-12 pm-clear-element">
-                            <textarea name="pm-comment-message" cols="20" rows="10" placeholder="Comment" class="pm-comment-form-textarea"></textarea>
+                            <textarea name="post_comment_description" cols="20" rows="10" placeholder="Comment" class="pm-comment-form-textarea"></textarea>
                         </div>
                         
                         <div class="col-lg-12 pm-clear-element">
-                            <div class="pm-comment-html-tags">
-                                <span>You may use these HTML tags and attributes: </span>
-    <p>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; </p>
-                            </div>
                             
-                            <input name="pm-comment-submit-btn" class="pm-rounded-btn no-border" type="button" value="Post Comment &plus;">
+                            <input name="pm-comment-submit-btn" class="pm-rounded-btn no-border" type="submit" value="Post Comment &plus;">
                             
                         </div>
                         
