@@ -45,11 +45,11 @@ $route['404_override'] = '';
 *	Site Routes
 */
 $route['home'] = 'site/home_page';
-$route['about'] = 'site/about';
+$route['about-us'] = 'site/about_us';
 $route['services'] = 'site/services';
 $route['loans'] = 'site/loans';
 $route['blog'] = 'site/blog';
-$route['contact'] = 'site/contact';
+$route['contact-us'] = 'site/contact_us';
 
 /*
 *	Settings Routes
