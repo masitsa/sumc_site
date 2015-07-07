@@ -8,6 +8,7 @@ class Departments extends MX_Controller {
 		$this->load->model('admin/users_model');
 		$this->load->model('site/departments_model');
 		$this->load->model('site/site_model');
+		$this->load->model('admin/blog_model');
 	}
     
 	/*

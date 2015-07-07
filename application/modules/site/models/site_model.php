@@ -176,12 +176,12 @@ class Site_model extends CI_Model
 		
 		$navigation = 
 		'
-			<li class="'.$home.'"><a href="#">Home</a></li>
-			<li class="'.$about.'"><a href="#">About us</a></li>
-			<li class="'.$services.'"><a href="#">Services</a></li>
-			<li class="'.$departments.'"><a href="#">Departments</a></li>
-			<li class="'.$blog.'"><a href="#">Blog</a></li>
-			<li class="'.$contact.'"><a href="#">Contact</a></li>
+			<li class="'.$home.'"><a href="'.site_url().'home">Home</a></li>
+			<li class="'.$about.'"><a href="'.site_url().'about-us">About us</a></li>
+			<li class="'.$services.'"><a href="'.site_url().'services">Services</a></li>
+			<li class="'.$departments.'"><a href="'.site_url().'departments">Departments</a></li>
+			<li class="'.$blog.'"><a href="'.site_url().'blog">Blog</a></li>
+			<li class="'.$contact.'"><a href="'.site_url().'contact-us">Contact</a></li>
 			
 		';
 		
@@ -207,7 +207,7 @@ class Site_model extends CI_Model
 			$home = 'active';
 		}
 		
-		if($name == 'about')
+		if($name == 'about-us')
 		{
 			$about = 'active';
 		}
@@ -227,7 +227,7 @@ class Site_model extends CI_Model
 			$blog = 'active';
 		}
 		
-		if($name == 'contact')
+		if($name == 'contact-us')
 		{
 			$contact = 'active';
 		}
@@ -247,11 +247,11 @@ class Site_model extends CI_Model
 		$navigation = 
 		'
 			<li><a href="'.site_url().'home" class="'.$home.'">Home</a></li>
-			<li><a href="#" class="'.$about.'">About us</a></li>
-			<li><a href="#" class="'.$services.'">Services</a></li>
-			<li><a href="#" class="'.$departments.'">Departments</a></li>
+			<li><a href="'.site_url().'about-us" class="'.$about.'">About us</a></li>
+			<li><a href="'.site_url().'services" class="'.$services.'">Services</a></li>
+			<li><a href="'.site_url().'departments" class="'.$departments.'">Departments</a></li>
 			<li><a href="'.site_url().'blog" class="'.$blog.'">Blog</a></li>
-			<li><a href="#" class="'.$contact.'">Contact</a></li>
+			<li><a href="'.site_url().'contact-us" class="'.$contact.'">Contact</a></li>
 			
 		';
 		

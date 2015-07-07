@@ -14,6 +14,7 @@ class Site extends CI_Controller
 		
 		$this->load->model('site_model');
 		$this->load->model('admin/blog_model');
+		$this->load->model('admin/users_model');
 		
 		$this->slideshow_location = base_url().'assets/slideshow/';
 		$this->service_location = base_url().'assets/service/';
