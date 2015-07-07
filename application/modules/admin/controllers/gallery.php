@@ -87,7 +87,7 @@ class Gallery extends admin {
 	
 	function add_gallery()
 	{
-		$v_data['gallery_location'] = 'http://placehold.it/500x500';
+		/*$v_data['gallery_location'] = 'http://placehold.it/500x500';
 		
 		$this->session->unset_userdata('gallery_error_message');
 		
@@ -104,13 +104,14 @@ class Gallery extends admin {
 			$v_data['gallery_error'] = $this->session->userdata('gallery_error_message');
 		}
 		
-		$gallery_error = $this->session->userdata('gallery_error_message');
+		$gallery_error = $this->session->userdata('gallery_error_message');*/
 		
 		$this->form_validation->set_rules('gallery_name', 'Title', 'trim|xss_clean');
+		$this->form_validation->set_rules('department_id', 'Department', 'trim|xss_clean');
 
 		if ($this->form_validation->run())
 		{	
-			if(empty($gallery_error))
+			/*if(empty($gallery_error))
 			{
 				$data2 = array(
 					'gallery_name'=>$this->input->post("gallery_name"),
@@ -127,15 +128,42 @@ class Gallery extends admin {
 				$this->session->set_userdata('success_message', 'Gallery has been added');
 				
 				redirect('administration/all-gallery-images');
+			}*/
+			$resize['width'] = 800;
+			$resize['height'] = 600;
+			$response = $this->file_model->upload_gallery($this->input->post('department_id'), $this->gallery_path, $resize);
+			//var_dump($response);die();
+			if($response)
+			{
+				$this->session->set_userdata('success_message', 'Gallery has been added');
+				
+				redirect('administration/all-gallery-images');
+			}
+			
+			else
+			{
+				if(isset($response['upload']))
+				{
+					$this->session->set_userdata('gallery_error_message', $error['upload'][0]);
+				}
+				else if(isset($response['resize']))
+				{
+					$this->session->set_userdata('gallery_error_message', $error['resize'][0]);
+				}
+				$gallery_error = $this->session->userdata('gallery_error_message');
 			}
 		}
+		else
+		{
+			$gallery_error = '';
+		}
 		
-		$gallery = $this->session->userdata('gallery_file_name');
+		/*$gallery = $this->session->userdata('gallery_file_name');
 		
 		if(!empty($gallery))
 		{
 			$v_data['gallery_location'] = $this->gallery_location.$this->session->userdata('gallery_file_name');
-		}
+		}*/
 		$v_data['error'] = $gallery_error;
 		$v_data['active_departments'] = $this->department_model->get_active_departments();
 		
@@ -213,7 +241,7 @@ class Gallery extends admin {
 			$v_data['gallery_location'] = $this->gallery_location.$this->session->userdata('gallery_file_name');
 		}
 		$v_data['error'] = $gallery_error;
-		$v_data['services'] = $this->service_model->get_active_services();
+		$v_data['active_departments'] = $this->department_model->get_active_departments();
 		
 		$data['content'] = $this->load->view("gallery/edit_gallery", $v_data, TRUE);
 		$data['title'] = 'Edit Gallery';

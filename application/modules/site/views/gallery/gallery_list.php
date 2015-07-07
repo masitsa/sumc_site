@@ -1,19 +1,30 @@
+<?php echo $this->load->view('site/includes/sub_header', '', TRUE);?>
 <!-- PANEL 1 -->
 <div class="container pm-containerPadding-top-80 pm-containerPadding-bottom-30">
 
 	<div class="row">
     	<div class="col-lg-12">
-        	
+        
             <ul class="pm-isotope-filter-system">
-            	<li class="pm-isotope-filter-system-expand">Currently viewing <i class="fa fa-angle-down"></i>
-                </li>
-            	<li><a href="#" class="current">All</a></li>
-                <li><a href="#">Advanced Technology</a></li>
-                <li><a href="#">Kids Care</a></li>
-                <li><a href="#">Patient Care</a></li>
-                <li><a href="#">Professional Staff</a></li>
-                <li><a href="#">Pharmaceutical Care</a></li>
-                <li><a href="#">Research &amp; Development</a></li>
+            	<li class="pm-isotope-filter-system-expand">Currently viewing <i class="fa fa-angle-down"></i></li>
+                <li><a href="#" class="current" data-filter="*" >All</a></li>
+				<?php
+                    if($gallery_departments->num_rows() > 0)
+                    {
+						$count = 0;
+                        foreach($gallery_departments->result() as $service)
+                        {
+                            $department_name = $service->department_name;
+                            $display_name = str_replace(' ','',strtolower($department_name));
+                            $department_id = $service->department_id;
+							$count++;
+							
+							?>
+                            <li><a href="#" data-filter=".<?php echo $display_name;?>"><?php echo $department_name;?></a></li>
+                            <?php
+                        }
+                    }
+                ?>
             </ul>
             
         </div>
@@ -27,39 +38,65 @@
 
 	<div class="row isotope" id="gallery-posts">
     
-    	
-        
-        <div class="isotope-item size2 col-lg-4 col-md-4 col-sm-12 col-xs-12">
-            
-            <div class="pm-gallery-post-item-container" style="background-image:url(img/gallery/post2.jpg);">
-            
-            	<div class="pm-gallery-post-item-info-container">
+    	<?php
+			if($gallery->num_rows() > 0)
+			{
+				foreach($gallery->result() as $res)
+				{
+					$gallery_name = $res->gallery_name;
+					$department_id3 = $res->department_id;
+					$gallery_image_name = $res->gallery_image_name;
+					$thumb = ''.$gallery_image_name;
+					$department_name = '';
+					$display_name = '';
+					
+					if($gallery_departments->num_rows() > 0)
+					{
+						foreach($gallery_departments->result() as $service)
+						{
+							$department_id2 = $service->department_id;
+							
+							if($department_id2 == $department_id3)
+							{
+								$department_name = $service->department_name;
+								$display_name = str_replace(' ','',strtolower($department_name));
+								break;
+							}
+						}
+					}
+					?>
+                    
+                    <div class="isotope-item size1 col-lg-4 col-md-4 col-sm-12 col-xs-12 <?php echo $display_name;?>">
                 
-                	<div class="pm-gallery-item-excerpt">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu porta elit, in pulvinar elit. Aenean finibus fringilla lorem et vulputate. Nunc gravida ut ante sit amet lobortis <a href="#">[...]</a></p>
+                        <div class="pm-gallery-post-item-container" style="background-image:url(<?php echo $gallery_location.$thumb;?>);">
                         
-                        <ul class="pm-gallery-item-btns">
-    	                                    
-            				<li><a class="fa fa-camera lightbox" data-rel="prettyPhoto[gallery]" href="img/gallery/post6.jpg"></a></li>
-    						<li><a class="fa-bars" href="#"></a></li>
-						</ul>
+                            <div class="pm-gallery-post-item-info-container">
+                            
+                                <div class="pm-gallery-item-excerpt">
+                                    
+                                    <ul class="pm-gallery-item-btns">
+                                                        
+                                        <li><a class="fa fa-video-camera lightbox" data-rel="prettyPhoto[gallery]" href="<?php echo $gallery_location.$gallery_image_name;?>"></a></li>
+                                    </ul>
+                                    
+                                </div>
+                            
+                            </div>
+                            
+                            <a class="pm-gallery-item-expander fa fa-plus" href="#"></a>
+                             
+                        </div>
+                        
+                        <div class="pm-gallery-item-title">
+                            <p><?php echo $department_name;?></p>
+                        </div>
                         
                     </div>
                 
-                </div>
-                
-                <a class="pm-gallery-item-expander fa fa-plus" href="#"></a>
-                 
-            </div>
-            
-            <div class="pm-gallery-item-title">
-                <p>Blood Pressure Checkup</p>
-            </div>
-            
-        </div>
-
-
-    
+					<?php
+				}
+			}
+		?>
     </div>
 
 </div>
@@ -73,12 +110,7 @@
     	<div class="col-lg-12">
         	
             <ul class="pm-post-loaded-info">
-            	<li>
-                	<p>Viewing <strong>4</strong> of <strong>19</strong> posts</p>
-                </li>
-                <li>
-                	<a href="#">Load more &nbsp; <i class="fa fa-cloud-download"></i></a>
-                </li>
+            	<?php if(isset($links)){echo $links;}?>
             </ul>
             
         </div>

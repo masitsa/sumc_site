@@ -13,13 +13,58 @@ class Site_model extends CI_Model
 		return $query;
 	}
 	
-	public function get_services()
+	public function get_services($table, $where, $limit = NULL)
 	{
-  		$table = "service";
-		$where = "service_status = 1";
+		$this->db->where($where);
+		$this->db->select('service.*, department.department_name');
+		if($limit != NULL)
+		{
+			$this->db->order_by('last_modified', 'RANDOM');
+			$query = $this->db->get($table, $limit);
+		}
+		
+		else
+		{
+			$this->db->order_by('service_name', 'ASC');
+			$query = $this->db->get($table);
+		}
+		
+		return $query;
+	}
+	
+	public function get_departments()
+	{
+  		$table = "department";
+		$where = "department_status = 1";
 		
 		$this->db->where($where);
+		$this->db->order_by('department_name');
 		$query = $this->db->get($table);
+		
+		return $query;
+	}
+	
+	public function get_gallery_departments()
+	{
+  		$table = "department, gallery";
+		$where = "department.department_status = 1 AND gallery.department_id = department.department_id";
+		
+		$this->db->where($where);
+		$this->db->group_by('department_name');
+		$this->db->order_by('department_name');
+		$query = $this->db->get($table);
+		
+		return $query;
+	}
+	
+	public function get_all_gallerys($table, $where)
+	{
+		//retrieve all gallerys
+		$this->db->from($table);
+		$this->db->select('*');
+		$this->db->where($where);
+		$this->db->order_by('department.department_name');
+		$query = $this->db->get();
 		
 		return $query;
 	}
@@ -30,6 +75,17 @@ class Site_model extends CI_Model
 		$where = "gallery.gallery_status = 1 AND service.service_status = 1 AND gallery.service_id = service.service_id";
 		
 		$this->db->select('DISTINCT(service.service_name), service.service_id');
+		$this->db->where($where);
+		$query = $this->db->get($table);
+		
+		return $query;
+	}
+	
+	public function get_service($service_name)
+	{
+  		$table = "service";
+		$where = array('service_name' => $service_name);
+		
 		$this->db->where($where);
 		$query = $this->db->get($table);
 		
@@ -131,6 +187,7 @@ class Site_model extends CI_Model
 		$departments = '';
 		$blog = '';
 		$contact = '';
+		$gallery = '';
 		
 		if($name == 'home')
 		{
@@ -157,30 +214,42 @@ class Site_model extends CI_Model
 			$blog = 'active';
 		}
 		
-		if($name == 'contact')
+		if($name == 'contact-us')
 		{
 			$contact = 'active';
 		}
 		
-		/*$navigation = 
-		'
-			<li class="'.$home.'"><a href="'.site_url().'home'.'">Home</a></li>
-			<li class="'.$about.'"><a href="'.site_url().'about'.'">About us</a></li>
-			<li class="'.$services.'"><a href="'.site_url().'services'.'">Services</a></li>
-			<li class="'.$portfolio.'"><a href="'.site_url().'portfolio'.'">Portfolio</a></li>
-			<li class="'.$blog.'"><a href="'.site_url().'blog'.'">Blog</a></li>
-			<li class="'.$contact.'"><a href="'.site_url().'contact'.'">Contact</a></li>
-			
-		';*/
+		if($name == 'gallery')
+		{
+			$gallery = 'active';
+		}
 		
+		//get departments
+		$query = $this->get_active_departments();
+		$sub_menu_services = '';
+		if($query->num_rows() > 0)
+		{
+			foreach($query->result() as $res)
+			{
+				$department_name = $res->department_name;
+				$web_name = $this->create_web_name($department_name);
+				$sub_menu_services .= '<li><a href="'.site_url().'services/'.$web_name.'">'.$department_name.'</a></li>';
+			}
+		}
 		
 		$navigation = 
 		'
 			<li class="'.$home.'"><a href="'.site_url().'home">Home</a></li>
-			<li class="'.$about.'"><a href="'.site_url().'about-us">About us</a></li>
-			<li class="'.$services.'"><a href="'.site_url().'services">Services</a></li>
 			<li class="'.$departments.'"><a href="'.site_url().'departments">Departments</a></li>
+			<li class="'.$services.'">
+				<a href="'.site_url().'services">Services</a>
+				<ul>
+					'.$sub_menu_services.'
+				</ul>
+			</li>
+			<li class="'.$gallery.'"><a href="'.site_url().'gallery">Gallery</a></li>
 			<li class="'.$blog.'"><a href="'.site_url().'blog">Blog</a></li>
+			<li class="'.$about.'"><a href="'.site_url().'about-us">About us</a></li>
 			<li class="'.$contact.'"><a href="'.site_url().'contact-us">Contact</a></li>
 			
 		';
@@ -201,13 +270,14 @@ class Site_model extends CI_Model
 		$departments = '';
 		$blog = '';
 		$contact = '';
+		$gallery = '';
 		
 		if($name == 'home')
 		{
 			$home = 'active';
 		}
 		
-		if($name == 'about-us')
+		if($name == 'about')
 		{
 			$about = 'active';
 		}
@@ -232,25 +302,19 @@ class Site_model extends CI_Model
 			$contact = 'active';
 		}
 		
-		/*$navigation = 
-		'
-			<li class="'.$home.'"><a href="'.site_url().'home'.'">Home</a></li>
-			<li class="'.$about.'"><a href="'.site_url().'about'.'">About us</a></li>
-			<li class="'.$services.'"><a href="'.site_url().'services'.'">Services</a></li>
-			<li class="'.$portfolio.'"><a href="'.site_url().'portfolio'.'">Portfolio</a></li>
-			<li class="'.$blog.'"><a href="'.site_url().'blog'.'">Blog</a></li>
-			<li class="'.$contact.'"><a href="'.site_url().'contact'.'">Contact</a></li>
-			
-		';*/
-		
+		if($name == 'gallery')
+		{
+			$gallery = 'active';
+		}
 		
 		$navigation = 
 		'
 			<li><a href="'.site_url().'home" class="'.$home.'">Home</a></li>
-			<li><a href="'.site_url().'about-us" class="'.$about.'">About us</a></li>
-			<li><a href="'.site_url().'services" class="'.$services.'">Services</a></li>
 			<li><a href="'.site_url().'departments" class="'.$departments.'">Departments</a></li>
+			<li><a href="'.site_url().'services" class="'.$services.'">Services</a></li>
+			<li><a href="'.site_url().'gallery" class="'.$gallery.'">Gallery</a></li>
 			<li><a href="'.site_url().'blog" class="'.$blog.'">Blog</a></li>
+			<li><a href="'.site_url().'about-us" class="'.$about.'">About us</a></li>
 			<li><a href="'.site_url().'contact-us" class="'.$contact.'">Contact</a></li>
 			
 		';
@@ -270,6 +334,61 @@ class Site_model extends CI_Model
 		$field_name = str_replace("-", " ", $web_name);
 		
 		return $field_name;
+	}
+	
+	public function get_breadcrumbs()
+	{
+		$page = explode("/",uri_string());
+		$total = count($page);
+		$last = $total - 1;
+		$crumbs = '<li><a href="'.site_url().'home">HOME </a></li>';
+		
+		for($r = 0; $r < $total; $r++)
+		{
+			$name = $this->decode_web_name($page[$r]);
+			if($r == $last)
+			{
+				$crumbs .= '<li><i class="fa fa-angle-right"></i></li>
+                        <li>'.strtoupper($name).'</li>';
+			}
+			else
+			{
+				if($total == 3)
+				{
+					if($r == 1)
+					{
+						$crumbs .= '<li><i class="fa fa-angle-right"></i></li>
+                        <li><a href="'.site_url().$page[$r-1].'/'.strtolower($name).'">'.strtoupper($name).'</a></li>';
+					}
+					else
+					{
+						$crumbs .= '<li><i class="fa fa-angle-right"></i></li>
+							<li><a href="'.site_url().strtolower($name).'">'.strtoupper($name).'</a></li>';
+					}
+				}
+				else
+				{
+					$crumbs .= '<li><i class="fa fa-angle-right"></i></li>
+                        <li><a href="'.site_url().strtolower($name).'">'.strtoupper($name).'</a></li>';
+				}
+			}
+		}
+		
+		return $crumbs;
+	}
+	
+	public function get_active_departments()
+	{
+  		$table = "service, department";
+		$where = "department.department_status = 1 AND service.department_id = department.department_id";
+		
+		$this->db->select('department.*');
+		$this->db->where($where);
+		$this->db->group_by('department_name');
+		$this->db->order_by('department_name', 'ASC');
+		$query = $this->db->get($table);
+		
+		return $query;
 	}
 }
 ?>

@@ -77,7 +77,8 @@
 					</div>
                 	<div class="col-md-8">
                         <label class="control-label" for="image">Gallery Image</label>
-                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <?php echo form_upload(array( 'name'=>'gallery[]', 'multiple'=>true, 'class'=>'btn'));?>
+                            <!--<div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="max-height: 400px;">
                                 	<img src="<?php echo $gallery_location;?>" class="img-responsive"/>
                                 </div>
@@ -86,7 +87,7 @@
                                         <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                 	</div>
                 </div>
 				

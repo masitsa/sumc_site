@@ -5,16 +5,14 @@ $result = '';
 //if users exist display them
 
 if ($query->num_rows() > 0)
-{   
-   
-    
+{
     foreach ($query->result() as $row)
     {
         $department_id = $row->department_id;
         $department_name = $row->department_name;
         $department_status = $row->department_status;
         $image = base_url().'assets/department/'.$row->department_image_name;
-    
+		$web_name = $this->site_model->create_web_name($department_name);
         $created_by = $row->created_by;
         $modified_by = $row->modified_by;
         $description = $row->department_description;
@@ -36,12 +34,12 @@ if ($query->num_rows() > 0)
                     <div class="pm-gallery-post-item-info-container">
                     
                         <div class="pm-gallery-item-excerpt">
-                            <p>'.$mini_desc.' <a href="'.site_url().'departments/view-single/'.$department_id.'">[...]</a></p>
+                           <!-- <p>'.$mini_desc.' <a href="'.site_url().'services/'.$web_name.'">[...]</a></p>-->
                             
                             <ul class="pm-gallery-item-btns">
                                                 
                                 <li><a class="fa fa-camera lightbox" data-rel="prettyPhoto[gallery]" href="'.$image.'"></a></li>
-                                <li><a class="fa-bars" href="'.site_url().'departments/view-single/'.$department_id.'"></a></li>
+                                <li><a class="" href="'.site_url().'services/'.$web_name.'">Services</a></li>
                             </ul>
                             
                         </div>
@@ -53,7 +51,7 @@ if ($query->num_rows() > 0)
                 </div>
                 
                 <div class="pm-gallery-item-title">
-                    <p>'.$department_name.'</p>
+                    <a href="'.site_url().'services/'.$web_name.'"><p>'.$department_name.'</p></a>
                 </div>
                 
             </div>
@@ -63,11 +61,11 @@ if ($query->num_rows() > 0)
     }
     else
     {
-        $result .= "There are no posts :-(";
+        $result .= "There are no departments :-(";
     }
    
   ?>          
-        
+<?php echo $this->load->view('site/includes/sub_header', '', TRUE);?>
 <!-- PANEL 2 -->
 <div class="container pm-containerPadding-top-20 pm-containerPadding-bottom-30">
 
@@ -86,12 +84,7 @@ if ($query->num_rows() > 0)
     	<div class="col-lg-12">
         	
             <ul class="pm-post-loaded-info">
-            	<li>
-                	<p>Viewing <strong>4</strong> of <strong>19</strong> posts</p>
-                </li>
-                <li>
-                	<a href="#">Load more &nbsp; <i class="fa fa-cloud-download"></i></a>
-                </li>
+            	<?php if(isset($links)){echo $links;}?>
             </ul>
             
         </div>

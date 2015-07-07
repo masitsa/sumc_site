@@ -120,4 +120,16 @@ class Gallery_model extends CI_Model
 			return FALSE;
 		}
 	}
+	
+	public function save_gallery_file($department_id, $file_name)
+	{
+		$data2 = array(
+			'department_id'=>$department_id,
+			'gallery_status'=>1,
+			'gallery_image_name'=>$file_name
+		);
+		
+		$table = "gallery";
+		$this->db->insert($table, $data2);
+	}
 }

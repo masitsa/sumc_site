@@ -7,7 +7,7 @@
                 	
                     <h5>Our Sponsors &amp; Partners</h5>
                     <div class="pm-column-title-divider">
-                    	<img height="29" width="29" src="<?php echo base_url().'assets/themes/medicallink/'?>img/divider-icon.png" alt="icon">
+                    	<img height="29" width="29" src="<?php echo base_url().'assets/themes/medicallink/'?>img/logo-small.png" alt="icon">
                     </div>
                     
                 </div>
@@ -19,36 +19,12 @@
                 	
                     <!-- carousel -->
                     <div id="pm-brands-carousel" class="owl-carousel owl-theme">
+                    
                         <div class="pm-brand-item">
-                        	
-                            
-                   	    	<img src="<?php echo base_url().'assets/themes/medicallink/'?>img/home/client-carousel1.jpg" width="263" height="67" alt="Foundation Medicine"> 
-                            <a href="http://www.google.com" target="_blank">foundation-medicine.com</a>
+                   	    	<img src="<?php echo base_url().'assets/images/creates.jpg'?>" width="263" height="67" alt="Foundation Medicine"> 
+                            <a href="#" target="_blank">Center for Research in Therapeutic Sciences</a>
                         </div>
-                        <div class="pm-brand-item">
-                        	
-                            
-                   	    	<img src="<?php echo base_url().'assets/themes/medicallink/'?>img/home/client-carousel2.jpg" width="263" height="67" alt="Hansen Medical"> 
-                            <a href="http://www.google.com" target="_blank">hansenmedical.com</a>
-                        </div>
-                        <div class="pm-brand-item">
-                        	
-                            
-                   	    	<img src="<?php echo base_url().'assets/themes/medicallink/'?>img/home/client-carousel3.jpg" width="263" height="67" alt="Clinica Sant Jordi"> 
-                            <a href="http://www.google.com" target="_blank">santjordit.com</a>
-                        </div>
-                        <div class="pm-brand-item">
-                        	
-                            
-                   	    	<img src="<?php echo base_url().'assets/themes/medicallink/'?>img/home/client-carousel4.jpg" width="263" height="67" alt="Sensile Medical"> 
-                            <a href="http://www.google.com" target="_blank">sensilemedical.com</a>
-                        </div>
-                        <div class="pm-brand-item">
-                        	
-                            
-                   	    	<img src="<?php echo base_url().'assets/themes/medicallink/'?>img/home/client-carousel5.jpg" width="263" height="67" alt="Medical Advantages Group Inc."> 
-                            <a href="http://www.google.com" target="_blank">maginc.com</a>
-                        </div>
+                        
                     </div>
                     <!-- carousel end -->
                     

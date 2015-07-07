@@ -589,15 +589,23 @@
 	   if($("#gallery-posts").length > 0){
 		  
 		  $('#gallery-posts').imagesLoaded( function(){
-			$('#gallery-posts').isotope({
+			/*$('#gallery-posts').isotope({
 			  itemSelector : '.isotope-item',
-			});
+			});*/
 			$('.isotope-item').css({
 			  opacity : 1,
 			});
 		  });
 		  
 	   }
+		var $grid = $('#gallery-posts').isotope({
+			itemSelector : '.isotope-item'
+		});
+	   $('.pm-isotope-filter-system').on( 'click', 'a', function() {
+		  var filterValue = $(this).attr('data-filter');
+		  $grid.isotope({ filter: filterValue });
+		});
+		
 	   
 		
 	/* ==========================================================================

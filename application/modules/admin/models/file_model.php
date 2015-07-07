@@ -131,7 +131,7 @@ class File_model extends CI_Model
 			else
 			{
 				//Create thumbnail
-				$create = $this->resize_image($image_upload_data['full_path'], $image_upload_data['file_path'].'thumbnail_'.$file_name, 80, 80);
+				$create = $this->resize_image($image_upload_data['full_path'], $image_upload_data['file_path'].'thumbnail_'.$file_name, 400, 400);
 				
 				if($create)
 				{
@@ -205,7 +205,7 @@ class File_model extends CI_Model
 	}
 	
 	// Upload & Resize in action
-    function upload_gallery($product_id, $gallery_path, $resize)
+    function upload_gallery($department_id, $gallery_path, $resize)
     {
 		$this->load->library('upload');
 		$this->load->library('image_lib');
@@ -256,7 +256,7 @@ class File_model extends CI_Model
 				$file_name = $upload_data['file_name'];
 				
 				$thumbs['full_path'][$count] = $upload_data['full_path'];
-				$thumbs['file_path'][$count] = $upload_data['file_path'].'thumb_'.$file_name;
+				$thumbs['file_path'][$count] = $upload_data['file_path'].'thumbnail_'.$file_name;
 				$count++;
                 
                 // set the resize config
@@ -282,10 +282,22 @@ class File_model extends CI_Model
                 }
                 else
                 {
-					if($this->products_model->save_gallery_file($product_id, $file_name, 'thumb_'.$file_name))
+					$data2 = array(
+						'department_id'=>$department_id,
+						'gallery_status'=>1,
+						'gallery_image_name'=>$file_name
+					);
+					
+					$table = "gallery";
+					if($this->db->insert($table, $data2))
 					{
 						// otherwise, put each upload data to an array.
 						$success[] = $upload_data;
+					}
+					
+					else
+					{
+						$error['resize'][] = 'Unable to upload image';
 					}
                 }
             }
@@ -300,8 +312,8 @@ class File_model extends CI_Model
 				// and it's "/full/path/to/the/" + "thumb_" + "image.jpg
 				// or you can use 'create_thumbs' => true option instead
 				'new_image'     => $thumbs['file_path'][$r],
-				'width' => 80,
-				'height' => 80,
+				'width' => 400,
+				'height' => 200,
 				'maintain_ratio' => true,
 				);
 

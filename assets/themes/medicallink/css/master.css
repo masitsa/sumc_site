@@ -148,7 +148,7 @@ p {
   font-weight: 300;
   line-height: 24px; }
 
-p.light {
+p.light, p.MsoNormal {
   color: white; }
 
 strong {
@@ -1416,15 +1416,15 @@ header {
 
 .pm-sub-header-info {
   padding-top: 80px;
-  background-position: center top;
+  background-position: center -145px;
   background-repeat: no-repeat;
-  background-image: url(../img/sub-header.jpg);
-  height: 225px; }
+  background-image: url(../../../images/sub-header.jpg);
+  height: 325px; }
 
 .pm-page-title {
   font-family: 'Raleway';
   font-size: 36px;
-  color: #0db7c4;
+  color: #fff;
   font-weight: bold;
   text-transform: uppercase;
   margin-top: 30px;
@@ -1444,7 +1444,7 @@ header {
 .pm-page-message {
   font-family: 'Raleway';
   font-size: 16px;
-  color: #3f3b3b;
+  color: #fff;
   font-weight: 300; }
 
 .pm-sub-header-breadcrumbs {
@@ -2912,9 +2912,10 @@ header {
   font-size: 16px;
   font-weight: 300;
   color: #8b8b8b;
-  text-align: center;
+  text-align: justify;
   margin-bottom: 20px;
-  padding: 0px 20px; }
+  padding: 0px 20px;
+  min-height: 123px; }
 
 .pm-standalone-news-post-excerpt p a {
   font-family: inhert !important;
@@ -3317,6 +3318,15 @@ header {
   margin-bottom: 20px; }
 
 /* 51. News post single */
+.pm-single-service-post {
+  width: 100%;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  margin-bottom: 30px; }
 .pm-single-news-post {
   width: 100%;
   height: 400px;
@@ -3527,7 +3537,7 @@ header {
 /* 52. Services post */
 .pm-services-post {
   width: 100%;
-  height: 400px;
+  height: 140px;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -3587,6 +3597,8 @@ header {
   text-align: center;
   margin-bottom: 20px;
   padding: 0px 20px; }
+
+.pm-services-post-excerpt p.services_description{min-height:150px; text-align:justify;}
 
 .pm-services-post-excerpt p a {
   font-family: inhert !important;

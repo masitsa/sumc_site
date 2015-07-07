@@ -50,6 +50,10 @@
         <!-- PrettyPhoto -->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/themes/medicallink/'?>js/prettyphoto/css/prettyPhoto.css" />
         <!-- PrettyPhoto -->
+    
+        <!-- Isotope -->
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/themes/medicallink/'?>js/isotope/isotope.css" />
+        <!-- Isotope -->
         
         <!-- jQuery UI -->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/themes/medicallink/'?>css/jquery-ui/jquery-ui.css" />

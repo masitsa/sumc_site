@@ -78,7 +78,7 @@
                 	<div class="col-md-8">
                         <label class="control-label" for="image">Gallery Image</label>
                             <div class="fileinput fileinput-new" data-provides="fileinput">
-                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="max-height: 400px;">
+                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="max-height: 400px;max-width: 400px;">
                                 	<img src="<?php echo $gallery_location;?>" class="img-responsive"/>
                                 </div>
                                     <div>

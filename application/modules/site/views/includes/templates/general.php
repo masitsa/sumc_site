@@ -33,6 +33,7 @@
         <script src="<?php echo base_url().'assets/themes/medicallink/'?>js/prettyphoto/js/jquery.prettyPhoto.js"></script>
         <script src="<?php echo base_url().'assets/themes/medicallink/'?>js/tinynav.js"></script>
         <script src="<?php echo base_url().'assets/themes/medicallink/'?>js/jquery-ui.js"></script>
+    	<script src="<?php echo base_url().'assets/themes/medicallink/'?>js/isotope/jquery.isotope.min.js"></script>
         <script src="<?php echo base_url().'assets/themes/medicallink/'?>js/ajax-appointment-form/ajax-appointment-form.js"></script>
         <p id="back-top" class="visible-lg visible-md visible-sm"></p>
 	</body>

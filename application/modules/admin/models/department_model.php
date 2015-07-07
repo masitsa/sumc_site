@@ -146,4 +146,26 @@ class Department_model extends CI_Model
 		
 		return $query;
 	}
+	
+	public function get_department_id($department_name)
+	{
+  		$table = "department";
+		$where = array('department_name' => $department_name);
+		
+		$this->db->where($where);
+		$query = $this->db->get($table);
+		
+		if($query->num_rows() > 0)
+		{
+			$row = $query->row();
+			$department_id = $row->department_id;
+		}
+		
+		else
+		{
+			$department_id = FALSE;
+		}
+		
+		return $department_id;
+	}
 }

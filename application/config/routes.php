@@ -45,8 +45,10 @@ $route['404_override'] = '';
 *	Site Routes
 */
 $route['home'] = 'site/home_page';
-$route['about-us'] = 'site/about_us';
+$route['about-us'] = 'site/about';
 $route['services'] = 'site/services';
+$route['services/(:any)/(:any)'] = 'site/view_service/$2';
+$route['services/(:any)'] = 'site/services/$1';
 $route['loans'] = 'site/loans';
 $route['blog'] = 'site/blog';
 $route['contact-us'] = 'site/contact_us';
@@ -173,12 +175,12 @@ $route['blog/search/(:any)/(:num)'] = 'site/blog/index/__/$1/$2';//search presen
 *	Gallery Routes
 */
 $route['gallery'] = 'site/gallery';
+$route['gallery/(:num)'] = 'site/gallery/$1';
 
 
 /*
 *	Gallery Routes
 */
 $route['departments'] = 'site/departments';
-$route['departments/(:num)'] = 'site/departments/index/$1';
-$route['departments/(:num)/(:num)'] = 'site/departments/index/$1/$2';
-$route['departments/view-single/(:num)'] = 'site/departments/view_department/$1';
+$route['departments/(:num)'] = 'site/departments/$1';
+$route['departments/(:any)'] = 'site/view_department/$1';

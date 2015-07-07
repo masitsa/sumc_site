@@ -668,12 +668,12 @@ class Blog_model extends CI_Model
 	*	Retrieve recent posts
 	*
 	*/
-	public function get_recent_posts()
+	public function get_recent_posts($limit = 6)
 	{
-		$this->db->select('post.*');
-		$this->db->where('post_status = 1');
+		$this->db->select('post.*, blog_category.blog_category_name');
+		$this->db->where('post_status = 1  AND post.blog_category_id = blog_category.blog_category_id');
 		$this->db->order_by('created', 'DESC');
-		$query = $this->db->get('post', 6);
+		$query = $this->db->get('post, blog_category', $limit);
 		
 		return $query;
 	}

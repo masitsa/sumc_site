@@ -1,4 +1,4 @@
-        
+<?php echo $this->load->view('site/includes/sub_header', '', TRUE);?>
 <!-- PANEL 1 -->
 <div class="container pm-containerPadding-top-120 pm-containerPadding-bottom-90">
 	<div class="row">
@@ -8,14 +8,11 @@
         
         	<a href="#" class="typcn typcn-map pm-icon-btn"></a>
                                 
-            <h6 class="pm-column-title">Our History</h6>
+            <h6 class="pm-column-title">Our mission</h6>
             
             <div class="pm-title-divider"></div>
             
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-            
-            <p>Pellentesque id tempus neque, dapibus molestie eros. Sed et viverra metus, eget dictum nulla. Vestibulum non efficitur massa. Morbi dolor nisl, tristique at magna ac, mollis vestibulum arcu.</p>
-            
+           <p> <?php echo $company_details['mission'];?></p>
             
         </div>
         <!-- Column 1 end -->
@@ -26,14 +23,12 @@
             
             <a href="#" class="typcn typcn-group pm-icon-btn"></a>
             
-            <h6 class="pm-column-title">Building Trust</h6>
+            <h6 class="pm-column-title">Our vision</h6>
             
             <div class="pm-title-divider"></div>
             
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+            <p><?php echo $company_details['vision'];?></p>
             
-            <p>Pellentesque id tempus neque, dapibus molestie eros. Sed et viverra metus, eget dictum nulla. Vestibulum non efficitur massa. Morbi dolor nisl, tristique at magna ac, mollis vestibulum arcu.</p>
-                                
         </div>
         <!-- Column 2 end -->
         
@@ -43,13 +38,11 @@
         	
             <a href="#" class="typcn typcn-weather-sunny pm-icon-btn"></a>
             
-            <h6 class="pm-column-title">Improving Lives</h6>
+            <h6 class="pm-column-title">Our promise</h6>
             
             <div class="pm-title-divider"></div>
             
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-            
-            <p>Pellentesque id tempus neque, dapibus molestie eros. Sed et viverra metus, eget dictum nulla. Vestibulum non efficitur massa. Morbi dolor nisl, tristique at magna ac, mollis vestibulum arcu.</p>
+            <p><?php echo $company_details['objectives'];?></p>
             
         </div>
         <!-- Column 3 end -->
@@ -66,18 +59,18 @@
         
         	<div class="col-lg-12 pm-column-spacing pm-center">
             
-            	<h5 class="light">Meet the founders</h5>
+            	<h5 class="light">Meet the administrator</h5>
                 
-                <p class="light">The original Medical-Link team that keeps medical practices moving forward</p>
+                <p class="light">The link keeps medical practices moving forward</p>
                 
             </div>
         
-        	<div class="col-lg-4 col-md-4 col-sm-12 pm-column-spacing">
+        	<div class="col-lg-4 col-md-4 col-sm-12 pm-column-spacing col-lg-offset-4 col-md-offset-4">
         	
                 <!-- Staff profile -->
                 <div class="pm-staff-profile-parent-container">
                 
-                    <div class="pm-staff-profile-container" style="background-image:url(img/home/staff-profile1.jpg);">
+                    <div class="pm-staff-profile-container" style="background-image:url(<?php echo base_url();?>assets/images/harriet.jpg);">
                 
                         <div class="pm-staff-profile-overlay-container">
                         
@@ -89,8 +82,7 @@
                             </ul>
                             
                             <div class="pm-staff-profile-quote">
-                                <p>"The good physician treats the disease; the great physician treats the patient who has the disease."</p>
-                                <a href="#" class="pm-square-btn pm-center-align">View profile</a>
+                                <p>Harriet Koyoson is</p>
                             </div>
                         
                         </div>
@@ -100,82 +92,8 @@
                     </div>
                     
                     <div class="pm-staff-profile-info">
-                        <p class="pm-staff-profile-name light">dr. john stanton</p>
-                        <p class="pm-staff-profile-title light">family physician</p>
-                    </div>
-                    
-                </div>                    
-                <!-- Staff profile end -->
-                
-            </div>
-            
-            <div class="col-lg-4 col-md-4 col-sm-12 pm-column-spacing">
-                
-                <!-- Staff profile -->
-                <div class="pm-staff-profile-parent-container">
-                
-                    <div class="pm-staff-profile-container" style="background-image:url(img/staff/staff-profile2.jpg);">
-                
-                        <div class="pm-staff-profile-overlay-container">
-                        
-                            <ul class="pm-staff-profile-icons">
-                                <li><a href="#" class="fa fa-twitter"></a></li>
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-google-plus"></a></li>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
-                            </ul>
-                            
-                            <div class="pm-staff-profile-quote">
-                                <p>"The good physician treats the disease; the great physician treats the patient who has the disease."</p>
-                                <a href="#" class="pm-square-btn pm-center-align">View profile</a>
-                            </div>
-                        
-                        </div>
-                                                
-                        <a href="#" class="pm-staff-profile-expander fa fa-plus"></a>
-                                            
-                    </div>
-                    
-                    <div class="pm-staff-profile-info">
-                        <p class="pm-staff-profile-name light">mellisa dale</p>
-                        <p class="pm-staff-profile-title light">nutrionist</p>
-                    </div>
-                    
-                </div>                    
-                <!-- Staff profile end -->
-                
-            </div>
-            
-            <div class="col-lg-4 col-md-4 col-sm-12 pm-column-spacing">
-                
-                <!-- Staff profile -->
-                <div class="pm-staff-profile-parent-container">
-                
-                    <div class="pm-staff-profile-container" style="background-image:url(img/staff/staff-profile3.jpg);">
-                
-                        <div class="pm-staff-profile-overlay-container">
-                        
-                            <ul class="pm-staff-profile-icons">
-                                <li><a href="#" class="fa fa-twitter"></a></li>
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-google-plus"></a></li>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
-                            </ul>
-                            
-                            <div class="pm-staff-profile-quote">
-                                <p>"The good physician treats the disease; the great physician treats the patient who has the disease."</p>
-                                <a href="#" class="pm-square-btn pm-center-align">View profile</a>
-                            </div>
-                        
-                        </div>
-                                                
-                        <a href="#" class="pm-staff-profile-expander fa fa-plus"></a>
-                                            
-                    </div>
-                    
-                    <div class="pm-staff-profile-info">
-                        <p class="pm-staff-profile-name light">dr. peter michaels</p>
-                        <p class="pm-staff-profile-title light">pediatrician</p>
+                        <p class="pm-staff-profile-name light">Mrs. Harriet Koyoson</p>
+                        <p class="pm-staff-profile-title light">Clinic Administrator</p>
                     </div>
                     
                 </div>                    
@@ -212,7 +130,7 @@
             <!-- milestone -->
             <div class="milestone">
                 <div class="milestone-content">                         
-                    <span data-speed="2000" data-stop="1789" class="milestone-value"></span>
+                    <span data-speed="2000" data-stop="21348" class="milestone-value"></span>
                     <div class="milestone-description">Patients Treated</div>
                 </div>
             </div>
@@ -284,12 +202,9 @@
                 
                 <br />
                 
-                <p class="light">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+                <p class="light"><?php echo $company_details['about'];?></p>
                 
-                <p class="light">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
-                
-                <p class="light">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
-                
+                <p class="light"><?php //echo $company_details['core_values'];?></p>
                 
             </div>
         
