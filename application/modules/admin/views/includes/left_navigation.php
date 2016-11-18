@@ -35,9 +35,9 @@
                     <ul>
                         <li><a href="<?php echo base_url()."administration/all-gallery-images";?>">Gallery</a></li>
                         <li><a href="<?php echo base_url()."administration/all-slides";?>">Home page</a></li>
-                        <!--<li><a href="<?php echo base_url()."administration/all-jobs";?>">Jobs</a></li>-->
                         <li><a href="<?php echo base_url()."administration/all-departments";?>">Departments</a></li>
                         <li><a href="<?php echo base_url()."administration/all-services";?>">Services</a></li>
+                        <li><a href="<?php echo base_url()."administration/all-reviews";?>">Reviews</a></li>
                     </ul>
                 </li>
 				<!-- End: Products Menu -->

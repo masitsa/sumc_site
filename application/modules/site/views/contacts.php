@@ -47,140 +47,102 @@
 		$company_name = '';
 	}
 ?>
+<?php echo $this->load->view('site/includes/sub_header', '', TRUE);?>
 
-    <section id="contact-info">
-        <div class="center">                
-            <h2>How to Reach Us?</h2>
+        
+        <!-- PANEL 1 -->
+        <div class="container pm-containerPadding-top-80 pm-containerPadding-bottom-50">
+        
+        	<div class="row">
+            	<div class="col-lg-12 pm-columnPadding30 pm-center">
+                	
+                    <h5>Get in touch with us</h5>
+                    <div class="pm-column-title-divider">
+                    	<img height="29" width="29" src="<?php echo base_url();?>assets/themes/medicallink/img/logo-small.png" alt="icon">
+                    </div>
+                    
+                    <p>Get in touch with us by phone, email or visit us in Strathmore University Madaraka, Ole Sangale Road</p>
+                    
+                    <br />
+                    
+                    <p><strong>Phone:</strong> <?php echo $phone;?></p>
+                    <p><strong>Email:</strong> <a href="mailto:<?php echo $email;?>"><?php echo $email;?></a></p>
+                    
+                    <br />
+                    <br />
+                    
+                    <h5>Location</h5>
+                    <div class="pm-column-title-divider">
+                    	<img height="29" width="29" src="<?php echo base_url();?>assets/themes/medicallink/img/logo-small.png" alt="icon">
+                    </div>
+                    
+                    <p><?php echo $building;?> <br /><?php echo $location;?> <br /><?php echo $floor;?></p>
+                    
+                </div>
+            </div>
+        
+        
         </div>
         
-        <div id="map_canvas" style="width: 100%; height:400px;"></div>
-       
-        <!--<div class="gmap-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-5 text-center">
-                        <div class="gmap">
-                            <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=JoomShaper,+Dhaka,+Dhaka+Division,+Bangladesh&amp;aq=0&amp;oq=joomshaper&amp;sll=37.0625,-95.677068&amp;sspn=42.766543,80.332031&amp;ie=UTF8&amp;hq=JoomShaper,&amp;hnear=Dhaka,+Dhaka+Division,+Bangladesh&amp;ll=23.73854,90.385504&amp;spn=0.001515,0.002452&amp;t=m&amp;z=14&amp;iwloc=A&amp;cid=1073661719450182870&amp;output=embed"></iframe>
-                        </div>
-                        <div id="map_canvas" style="width: 100%;"></div>
-                    </div>
-
-                    <div class="col-sm-7 map-content">
-                        <ul class="row">
-                            <li class="col-sm-6">
-                                <address>
-                                    <h5>Physical address</h5>
-                                    <p><?php echo $location;?> <br>
-                                    <?php echo $building;?><br>
-                                    <?php echo $floor;?> </p>                               
-                                    <p>Phone:<?php echo $phone;?> <br>
-                                    Email Address:<?php echo $email;?></p>
-                                </address>
-                                
-                                <address>
-                                    <h5>Working hours</h5>
-                                    <p>Weekdays: <?php echo $working_weekday;?> </p>                               
-                                    <p>Weekends & public holidays: <?php echo $working_weekend;?></p>
-                                </address>
-                            </li>
-
-
-                            <li class="col-sm-6">
-                                <address>
-                                    <h5>Postal</h5>
-                                    <p><?php echo $address;?> <br>
-                                    <?php echo $city;?> <br />
-                                    <?php echo $post_code;?></p> 
-                                </address>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="map_canvas" style="width: 100%; height:450px"></div>
             </div>
-        </div>-->
-    </section>  <!--/gmap_area -->
-
-    <section id="contact-page">
-        <div class="container">
+        </div>
+        <!-- PANEL 1 end -->
+        
+        <!-- PANEL 2 -->
+        <div class="container pm-containerPadding110">
+        
         	<div class="row">
-            	<div class="col-md-4 map-content">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <address>
-                                <h5>Physical address</h5>
-                                <p><?php echo $location;?> <br>
-                                <?php echo $building;?><br>
-                                <?php echo $floor;?> </p>                               
-                                <p>Phone:<?php echo $phone;?> <br>
-                                Email Address:<?php echo $email;?></p>
-                            </address>
-                        </div>
-
-                        <div class="col-sm-12">
-                        	<address>
-                                <h5>Working hours</h5>
-                                <p>Weekdays: <?php echo $working_weekday;?> </p>                               
-                                <p>Weekends & public holidays: <?php echo $working_weekend;?></p>
-                            </address>
-                        </div>
-
-                        <div class="col-sm-12">
-                            <address>
-                                <h5>Postal address</h5>
-                                <p><?php echo $address;?> <br>
-                                <?php echo $city;?> <br />
-                                <?php echo $post_code;?></p> 
-                            </address>
-                        </div>
+            	<div class="col-lg-12 pm-center pm-column-spacing">
+                	<h5>Contact us by Form</h5>
+                    <div class="pm-column-title-divider">
+                    	<img height="29" width="29" src="<?php echo base_url();?>assets/themes/medicallink/img/logo-small.png" alt="icon">
                     </div>
                 </div>
-                
-                <div class="col-md-8">
-                	<div class="center">        
-                        <h2>Drop Your Message</h2>
-                        <p class="lead">Send us a message and we will get back to you; ussually between 24 hours.</p>
-                    </div> 
-                    <div class="row contact-wrap"> 
-                        <div class="status alert alert-success" style="display: none"></div>
-                        <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="sendemail.php">
-                            <div class="col-sm-5 col-sm-offset-1">
-                                <div class="form-group">
-                                    <label>Name *</label>
-                                    <input type="text" name="name" class="form-control" required="required">
-                                </div>
-                                <div class="form-group">
-                                    <label>Email *</label>
-                                    <input type="email" name="email" class="form-control" required="required">
-                                </div>
-                                <div class="form-group">
-                                    <label>Phone</label>
-                                    <input type="number" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Company Name</label>
-                                    <input type="text" class="form-control">
-                                </div>                        
-                            </div>
-                            <div class="col-sm-5">
-                                <div class="form-group">
-                                    <label>Subject *</label>
-                                    <input type="text" name="subject" class="form-control" required="required">
-                                </div>
-                                <div class="form-group">
-                                    <label>Message *</label>
-                                    <textarea name="message" id="message" required="required" class="form-control" rows="8"></textarea>
-                                </div>                        
-                                <div class="form-group">
-                                    <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Submit Message</button>
-                                </div>
-                            </div>
-                        </form> 
-                    </div><!--/.row-->
-                </div>
             </div>
-        </div><!--/.container-->
-    </section><!--/#contact-page-->
-    
+            
+            <div class="row">
+                
+                	<form action="<?php echo site_url();?>site/contact_us/contact" method="post" id="contact-form">
+                		<p class="col-md-12" id="appointment_message" style="text-align:center; color:#0db7c4;"></p>
+                    	
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <input name="first_name" class="pm-form-textfield" type="text" placeholder="First Name">
+                        </div>
+                        
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <input name="last_name" class="pm-form-textfield" type="text" placeholder="Last Name">
+                        </div>
+                        
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <input name="email" class="pm-form-textfield" type="text" placeholder="Email Address">
+                        </div>
+                        
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <input name="phone" class="pm-form-textfield" type="text" placeholder="Phone Number">
+                        </div>
+                        
+                        <div class="col-lg-12">
+                            <textarea name="message" class="pm-form-textarea" cols="50" rows="10" placeholder="Message"></textarea>
+                        </div>
+                        
+                        <div class="col-lg-12 pm-center">
+                            <input type="submit" value="Submit Form &plus;" name="pm-form-submit-btn" class="pm-form-submit-btn" id="pm-contact-form-btn">
+                            <div id="pm-contact-form-response"></div>
+                            <p class="pm-required">all fields are required</p>
+                        </div>
+                    
+                    </form>
+                
+                
+                </div>
+            
+        </div>
+        <!-- PANEL 2 end -->
+        
+
 
 <script type="text/javascript"   src="http://maps.google.com/maps/api/js?sensor=false"> </script>
 
@@ -189,7 +151,7 @@ $(document).ready(function() {
 	initialize()
 });
   function initialize() {
-    var position = new google.maps.LatLng('-1.295977', '36.808225');
+    var position = new google.maps.LatLng('-1.309690', '36.814021');
 	 <!-- var position = new google.maps.LatLng(latitude, longitude);-->
     var myOptions = {
       zoom: 18,
@@ -207,7 +169,7 @@ $(document).ready(function() {
         title:"<?php echo $company_name;?>"
     });  
  
-   var contentString = '<br/><span itemprop="streetAddress"><?php echo $company_name;?></span>, <span itemprop="addressLocality"><?php echo $building.', '.$floor;?></span>';
+   var contentString = '<br/><span itemprop="streetAddress"><?php echo $building;?></span>, <span itemprop="addressLocality"><?php echo $location.', '.$floor;?></span>';
     //var contentString = '';
     var infowindow = new google.maps.InfoWindow({
         content: contentString
@@ -218,5 +180,34 @@ $(document).ready(function() {
     });
  
   }
+			
+			$( document ).on( "submit", "form#contact-form", function(e) 
+			{
+				var formData = new FormData(this);
+				
+				$.ajax({
+					url: '<?php echo site_url();?>site/contact_us/contact',
+					data: formData,
+					processData: false,
+					contentType: false,
+					type: 'POST',
+					dataType: "json",
+					success: function(data)
+					{
+						$('#pm-contact-form-response').html(data.message);
+						if(data.status == 'success')
+						{
+							$( "form#contact-form" )[0].reset();
+						}
+						
+						else
+						{
+							
+						}
+					}
+				});
+				
+				return false;
+			});
  
 </script>

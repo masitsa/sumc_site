@@ -12,7 +12,6 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="<?php echo base_url().'assets/themes/medicallink/'?>js/jquery-2.1.3.min.js"></script>
         <script src="<?php echo base_url().'assets/themes/medicallink/'?>js/jquery.viewport.mini.js"></script>
         <script src="<?php echo base_url().'assets/themes/medicallink/'?>js/jquery.easing.1.3.js"></script>
         <script src="<?php echo base_url().'assets/themes/medicallink/'?>bootstrap3/js/bootstrap.min.js"></script>
@@ -34,7 +33,36 @@
         <script src="<?php echo base_url().'assets/themes/medicallink/'?>js/tinynav.js"></script>
         <script src="<?php echo base_url().'assets/themes/medicallink/'?>js/jquery-ui.js"></script>
     	<script src="<?php echo base_url().'assets/themes/medicallink/'?>js/isotope/jquery.isotope.min.js"></script>
-        <script src="<?php echo base_url().'assets/themes/medicallink/'?>js/ajax-appointment-form/ajax-appointment-form.js"></script>
+        <script type="text/javascript">
+			$( document ).on( "submit", "form#pm-appointment-form", function(e) 
+			{
+				var formData = new FormData(this);
+				
+				$.ajax({
+					url: '<?php echo site_url();?>site/contact_us/book_appointment',
+					data: formData,
+					processData: false,
+					contentType: false,
+					type: 'POST',
+					dataType: "json",
+					success: function(data)
+					{
+						$('#appointment_message').html(data.message);
+						if(data.status == 'success')
+						{
+							$( "form#pm-appointment-form" )[0].reset();
+						}
+						
+						else
+						{
+							
+						}
+					}
+				});
+				
+				return false;
+			});
+		</script>
         <p id="back-top" class="visible-lg visible-md visible-sm"></p>
 	</body>
 </html>

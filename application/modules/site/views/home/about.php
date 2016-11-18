@@ -58,7 +58,7 @@
         <!-- PANEL 1 end -->
         
         <!-- PANEL 2 -->
-        <div class="pm-column-container pm-parallax-panel" style="background-color:#20bac7; background-image:url(<?php echo base_url().'assets/themes/medicallink/'?>img/home/video-panel-bg.jpg);" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="100">
+        <div class="pm-column-container pm-parallax-panel" style="background-color:#20bac7; background-image:url(<?php echo base_url().'assets/images/background-blue.jpg'?>);" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="100">
         
         	<!-- Column message -->
         	<div class="pm-column-container-message">

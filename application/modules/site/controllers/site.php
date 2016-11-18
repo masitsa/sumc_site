@@ -13,6 +13,7 @@ class Site extends CI_Controller
 		parent:: __construct();
 		
 		$this->load->model('site_model');
+		$this->load->model('admin/review_model');
 		$this->load->model('admin/blog_model');
 		$this->load->model('admin/gallery_model');
 		$this->load->model('admin/users_model');
@@ -35,6 +36,7 @@ class Site extends CI_Controller
 		$data['slides'] = $this->site_model->get_slides();
 		$data['latest_posts'] = $this->blog_model->get_recent_posts(3);
 		$data['departments'] = $this->site_model->get_departments();
+		$data['reviews'] = $this->review_model->get_recent_reviews(6);
 		
 		$data['slideshow_location'] = $this->slideshow_location;
 		$data['service_location'] = $this->service_location;
@@ -50,6 +52,7 @@ class Site extends CI_Controller
 		$data['title'] = 'About us';
 		$v_data['title'] = 'About us';
 		$data['company_details'] = $this->site_model->get_contacts();
+		$data['reviews'] = $this->review_model->get_recent_reviews(3);
 		$v_data['content'] = $this->load->view('about_us/about_us', $data, true);
 		
 		$this->load->view("includes/templates/general", $v_data);
@@ -122,7 +125,7 @@ class Site extends CI_Controller
 	public function contact()
 	{
 		$data['contacts'] = $this->site_model->get_contacts();
-		
+		$data['title'] = 'Contact us';
 		$v_data['title'] = 'Contact us';
 		$v_data['class'] = '';
 		$v_data['content'] = $this->load->view("contacts", $data, TRUE);

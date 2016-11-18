@@ -51,7 +51,7 @@ $route['services/(:any)/(:any)'] = 'site/view_service/$2';
 $route['services/(:any)'] = 'site/services/$1';
 $route['loans'] = 'site/loans';
 $route['blog'] = 'site/blog';
-$route['contact-us'] = 'site/contact_us';
+$route['contact-us'] = 'site/contact';
 
 /*
 *	Settings Routes
@@ -112,6 +112,15 @@ $route['administration/activate-department/(:num)/(:num)'] = 'admin/departments/
 $route['administration/deactivate-department/(:num)/(:num)'] = 'admin/departments/deactivate_department/$1/$2';
 $route['administration/delete-department/(:num)/(:num)'] = 'admin/departments/delete_department/$1/$2';
 
+//reviews
+$route['administration/all-reviews'] = 'admin/reviews/index';
+$route['administration/all-reviews/(:num)'] = 'admin/reviews/index/$1';//with a page number
+$route['administration/add-review'] = 'admin/reviews/add_review';
+$route['administration/edit-review/(:num)/(:num)'] = 'admin/reviews/edit_review/$1/$2';
+$route['administration/activate-review/(:num)/(:num)'] = 'admin/reviews/activate_review/$1/$2';
+$route['administration/deactivate-review/(:num)/(:num)'] = 'admin/reviews/deactivate_review/$1/$2';
+$route['administration/delete-review/(:num)/(:num)'] = 'admin/reviews/delete_review/$1/$2';
+
 //services
 $route['administration/all-services'] = 'admin/services/index';
 $route['administration/all-services/(:num)'] = 'admin/services/index/$1';//with a page number
@@ -162,7 +171,7 @@ $route['deactivate-comment/(:num)'] = 'admin/blog/deactivate_comment/$1';
 */
 $route['blog'] = 'site/blog';
 $route['blog/(:num)'] = 'site/blog/index/__/__/$1';//going to different page without any filters
-$route['blog/view-single/(:any)'] = 'site/blog/view_post/$1';//going to single post page
+$route['blog/(:any)'] = 'site/blog/view_post/$1';//going to single post page
 $route['blog/category/(:any)'] = 'site/blog/index/$1';//category present
 $route['blog/category/(:any)/(:num)'] = 'site/blog/index/$1/$2';//category present going to next page
 $route['blog/search/(:any)'] = 'site/blog/index/__/$1';//search present

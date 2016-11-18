@@ -62,8 +62,8 @@
                         <div class="pm-sub-menu-info">
                         	
                             <ul class="pm-micro-navigation">
-                            	<li><a href="#">Clinic Information</a></li>
-                                <li><a href="#">General Questions</a></li>
+                            	<li><a href="<?php echo site_url().'about-us';?>">Clinic Information</a></li>
+                                <li><a href="<?php echo site_url().'contact-us';?>">General Questions</a></li>
                                 <li><a href="#" class="pm-appointment-form-btn">Request an appointment</a></li>
                             </ul>
                             
@@ -92,22 +92,23 @@
         	
             <div class="container">
             	<div class="row">
-                	
-                    <form action="#" method="post" id="pm-appointment-form">
+                	<p class="col-md-12" id="appointment_message" style="text-align:center; color:#fff;"></p>
+                    
+                    <form action="<?php echo site_url();?>site/contact_us/book_appointment" method="post" id="pm-appointment-form">
                         <div class="col-lg-4 col-md-4 col-sm-6">
-                        	<input name="pm_app_form_name" id="pm_app_form_name" type="text" class="pm-request-appointment-form-textfield" placeholder="Full Name">
+                        	<input name="full_name" type="text" class="pm-request-appointment-form-textfield" placeholder="Full Name">
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-6">
-                        	<input name="pm_app_form_email" id="pm_app_form_email" type="email" class="pm-request-appointment-form-textfield" placeholder="Email Address">
+                        	<input name="email" type="email" class="pm-request-appointment-form-textfield" placeholder="Email Address">
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-6">
-                        	<input name="pm_app_form_phone" id="pm_app_form_phone" type="phone" class="pm-request-appointment-form-textfield" placeholder="Phone Number">
+                        	<input name="phone" type="phone" class="pm-request-appointment-form-textfield" placeholder="Phone Number">
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
-                        	<input name="pm_app_form_date" id="pm_app_form_date" class="pm-request-appointment-form-textfield appointment-form-datepicker" type="text" placeholder="Date of Appointment" id="datepicker">
+                        	<input name="appointment_date" class="pm-request-appointment-form-textfield appointment-form-datepicker" type="text" placeholder="Date of Appointment" id="datepicker">
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12">
-                        	<input name="pm_app_form_time" id="pm_app_form_time" class="pm-request-appointment-form-textfield" type="text" placeholder="Time of Appointment (ex. 10:30am)">
+                        	<input name="appointment_time" class="pm-request-appointment-form-textfield" type="text" placeholder="Time of Appointment (ex. 10:30am)">
                         </div>
                         
                         <div class="col-lg-12 pm-clear-element" style="padding-top:20px;">
@@ -116,8 +117,6 @@
                             <p class="pm-appointment-form-notice">All fields are required.</p>
                             <a href="#" class="pm-appointment-form-close" id="pm-close-appointment-form"><i class="fa fa-close"></i> Close Appointment form</a>
                         </div>
-                        
-                        <input type="hidden" value="info@pulsarmedia.ca" name="pm_app_form_recipient" />
                         
                     </form>
                     

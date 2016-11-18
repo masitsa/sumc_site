@@ -389,7 +389,7 @@ h6 {
   padding-top: 90px; }
 
 .pm-containerPadding-top-100 {
-  padding-top: 100px; }
+  padding-top: 10px; }
 
 .pm-containerPadding-top-110 {
   padding-top: 110px; }
@@ -416,7 +416,7 @@ h6 {
   padding-bottom: 70px; }
 
 .pm-containerPadding-bottom-80 {
-  padding-bottom: 80px; }
+  padding-bottom: 0px; }
 
 .pm-containerPadding-bottom-90 {
   padding-bottom: 90px; }
@@ -737,10 +737,10 @@ header {
 /* 13. Fat Footer  */
 .pm-fat-footer {
   width: 100%;
-  background-color: #191b27;
+  background-color: #1F212D;
   padding: 100px 0px;
   background-repeat: no-repeat;
-  background-image: url(../img/footer/fat-footer-bg.jpg);
+  background-image: url(../../../images/footer.jpg);
   background-repeat: no-repeat;
   background-position: center center; }
 

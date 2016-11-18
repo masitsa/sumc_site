@@ -295,92 +295,49 @@
     
     <div class="row pm-containerPadding-top-30 pm-containerPadding-bottom-60 pm-center">
     
-    	<!-- Column 1 -->
-        <div class="col-lg-4 col-md-4 col-sm-12 desktop pm-center pm-columnPadding-30 pm-column-spacing">
-        	
-            <!-- Single testimonial -->
-            <div class="pm-single-testimonial-shortcode">
-            	
-            	<div style="background-image:url(img/information/avatar1.jpg);" class="pm-single-testimonial-img-bg">
-                    <div class="pm-single-testimonial-avatar-icon">
-                        <img width="33" height="41" class="img-responsive" src="<?php echo site_url();?>assets/themes/medicallink/img/logo-small.png">
+		<?php
+            if($reviews->num_rows() > 0)
+            {
+                $reviews_no = $reviews->num_rows();
+                $count = -1;
+                foreach($reviews->result() as $rev)
+                {           
+                    $review_id = $rev->review_id;
+                    $review_status = $rev->review_status;
+                    $review_name = $rev->review_name;
+                ?>
+                    <!-- Column 1 -->
+                    <div class="col-lg-4 col-md-4 col-sm-12 desktop pm-center pm-columnPadding-30 pm-column-spacing">
+                        <!-- Single testimonial -->
+                        <div class="pm-single-testimonial-shortcode">
+                            
+                            <div style="background-image:url(<?php echo base_url().'assets/images/avatar.jpg'?>);" class="pm-single-testimonial-img-bg">
+                                <div class="pm-single-testimonial-avatar-icon">
+                                    <img width="33" height="41" class="img-responsive" src="<?php echo site_url();?>assets/themes/medicallink/img/logo-small.png">
+                                </div>
+                            </div>
+                            
+                            <p class="name">Anonymous</p>
+                            <!--<p class="title">Electrical Engineer</p>-->
+                            
+                            <div class="pm-single-testimonial-divider"></div>
+                            
+                            <p class="quote">“<?php echo $review_name;?>”</p>
+                            
+                             <div class="pm-single-testimonial-divider"></div>
+                             
+                             <!--<p class="date">June 2014</p>-->
+                        
+                        </div>
+                        <!-- Single testimonial end -->
+                        
                     </div>
-                </div>
-                
-                <p class="name">dave johnson</p>
-                <p class="title">Electrical Engineer</p>
-                
-                <div class="pm-single-testimonial-divider"></div>
-                
-                <p class="quote">“Eum cu tantas legere complectitur, hinc utamur ea eam. Eum patrioque mnesarchum eu, diam erant convenire et vis. Et essent evertitur sea.”</p>
-                
-                 <div class="pm-single-testimonial-divider"></div>
-                 
-                 <p class="date">June 2014</p>
-            
-            </div>
-            <!-- Single testimonial end -->
-            
-      	</div>
-        <!-- Column 1 end -->
-        
-        <!-- Column 2 -->
-        <div class="col-lg-4 col-md-4 col-sm-12 desktop pm-center pm-columnPadding-30 pm-column-spacing">
-        	
-            <!-- Single testimonial -->
-            <div class="pm-single-testimonial-shortcode">
-            	
-            	<div style="background-image:url(img/information/avatar2.jpg);" class="pm-single-testimonial-img-bg">
-                    <div class="pm-single-testimonial-avatar-icon">
-                        <img width="33" height="41" class="img-responsive" src="<?php echo site_url();?>assets/themes/medicallink/img/logo-small.png">
-                    </div>
-                </div>
-                
-                <p class="name">nicole cadby</p>
-                <p class="title">Graphic designer</p>
-                
-                <div class="pm-single-testimonial-divider"></div>
-                
-                <p class="quote">“Eum cu tantas legere complectitur, hinc utamur ea eam. Eum patrioque mnesarchum eu, diam erant convenire et vis. Et essent evertitur sea.”</p>
-                
-                 <div class="pm-single-testimonial-divider"></div>
-                 
-                 <p class="date">September 2014</p>
-            
-            </div>
-            <!-- Single testimonial end -->
-            
-      </div>
-        <!-- Column 2 end -->
-        
-        <!-- Column 3 -->
-        <div class="col-lg-4 col-md-4 col-sm-12 desktop pm-center pm-columnPadding-30 pm-column-spacing">
-        	
-            <!-- Single testimonial -->
-            <div class="pm-single-testimonial-shortcode">
-            	
-            	<div style="background-image:url(img/information/avatar3.jpg);" class="pm-single-testimonial-img-bg">
-                    <div class="pm-single-testimonial-avatar-icon">
-                        <img width="33" height="41" class="img-responsive" src="<?php echo site_url();?>assets/themes/medicallink/img/logo-small.png">
-                    </div>
-                </div>
-                
-                <p class="name">mike stanton</p>
-                <p class="title">College Professor</p>
-                
-                <div class="pm-single-testimonial-divider"></div>
-                
-                <p class="quote">“Eum cu tantas legere complectitur, hinc utamur ea eam. Eum patrioque mnesarchum eu, diam erant convenire et vis. Et essent evertitur sea.”</p>
-                
-                 <div class="pm-single-testimonial-divider"></div>
-                 
-                 <p class="date">December 2014</p>
-            
-          </div>
-            <!-- Single testimonial end -->
-            
-      </div>
-        <!-- Column 3 end -->
+                    <!-- Column 1 end -->
+        <?php
+                }
+            }
+        ?>
+    	
         
     </div>
 
